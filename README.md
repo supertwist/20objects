@@ -1,2 +1,2 @@
-# 20object
+# 20objects
 Keeping Darwin Grosse's 20 Objects ALIVE!
