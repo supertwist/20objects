@@ -1,136 +1,137 @@
-While it is fun to bang away at buttons, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
+If you've done your prerequisite work (meaning that you watched some Max videos), you should understand the following:
+- You know that Max-built programs are called patches (or patchers).
+- You know that Max-built programs are made from objects.
+- You know how to lock or unlock the patcher.
+- You know how to select objects from the palette.
 
-# The number box object
+If that's not the case, you may want to watch more videos, or you may want to ask someone for help.
 
-The number box object is another user-interface object. It allows us to input numbers, it can display numbers generated from other objects, it can temporarily store numbers and it can even help translate from one number system to another. Let's begin with a simple patch.
+# The button object
+We are going to start our 20 Objects Tour with the simplest - yet one of the most often-used - objects in the palette: the button. The button is a user-interface object, which means that it interacts with us when we lock the patch, and that it can produce some sort of message as a result of our actions.
 
-Start the Max program and create a new patcher window, then double-click to bring up the palette. These three steps should already be second nature, since they are the first things we do to create almost any patch. Select the grey square with a darker triangle in it (but not the one with the dot); this will add a number box to our patch. Add a print object, and connect the outlet of the number box to the print object. Your patch should look something like this:
+Let's start by creating our first patch. It should look something like this:
 
-__insert number pic here__
+__image here__
 
-Lock the patcher, click on the number box and type a whole number. The number box acts as a numeric entry field. If you hit enter, or click outside the number box, you will see that entry is complete, and the number box outputs the value (as seen in the Max Window).
+We create this patch by following these steps:
 
-__insert console pic here__
+1. Run the Max application.
 
-There is another way to enter numbers. With the patcher window still locked, click on the number box and drag your mouse. You will see the number increment or decrement based on vertical motion. This scrolling mechanism is somewhat unique to the Max user interface, but it is a powerful and visual way to change values without using keystrokes. When you are scrolling the values, each new value will be sent out the outlet of the number box, and with a little scrolling you will quickly fill up the Max Window.
+2. Select "New Patcher" from the File menu. This will create a new window that says "Double-click to make a new object" in the middle of it. This is a blank patcher window, and will be where we build our patch.
 
-Let's modify the patch by adding another number box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
+3. You will notice that the window has a toolbar above it with a number of images of object. Click on the button-like icon to drop down the selection palette, then select the first item - a button:
 
-__insert console pic here__
+__image here__
 
-Lock the patch and change the value of the top number box. You will see that, as soon as you are done entering numbers (or, if you are scrolling the top box, at each value change), the second number box's value changes to match the first. What happened here? The value was sent from the outlet of the first number box, and received in the inlet of the second. When a number box receives a numeric message, it will change its value to match the input. It will also send the value out its outlet (thereby sending the number to the print object).
+Click on it (but not on any number that appears on top of the button); a button will be placed at the target point within your patcher window.
 
-Also notice that if you change the value of the lower number box, it does not change the value of the upper box: messages flow from outlets to inlets, and never back "upstream". This is important in understanding the "flow" of a Max patch.
+4. Lock the window (by clicking on the lock icon at the bottom of the window), and click on the new button. You will see that it lights up every time you click on it, responding to your action. Unlock the patch (by again clicking on the lock icon at the bottom of the window) and click on the button. It will now be selected, and you can move it or delete it like you would using any graphics program.
 
-Let's continue modifying the patch by adding a button object and connecting it to the original number box. Your patcher window should look something like this:
+5. Let's add another object. This time, select the object at the top-left. This is the standard object box; selecting it will place it in your patcher window and place the cursor inside, waiting for you to identify which object you really want to create. Type "print", then click outside the object. The object will transform into a print object, and will add an inlet at the top.
 
-__insert pic here__
+6. Click on the outlet of the button object (the little black nub), and drag toward the print object. You will see a line forming as you drag. Drag it to the inlet of the print object and release the mouse - the line will now connect the two objects. This line is called a "patchcord", and is the way that one object communicates with another.
 
-You can change the number box values, but if you stop and click on the button, you will see the current value sent to the Max Window. Remember that the button sends out a "bang" message, and that object that receives a bang will "do what it was designed to do". The thing that the number box was designed to do was to send out a numeric value. Hence, when you bang a number box, you get its value sent from its output.
+7. Lock the patcher, and make sure the Max window is showing - if it isn't, you can make it appear by selecting Max Window from the Window menu. Now click on your button. You should see this appear in the Max Window:
 
-Let's make one more change to this patch. Unlock the patch and click on the lower number box to select it. Then select Inspector from the Object menu. A new window will appear with a bunch of object attributes and their current values.
+__image here__
 
-__insert pic here__
+Congratulations! You've just created your first Max patch from scratch. It may not seem that impressive, but in Computer Science terms, you've done quite a bit: you created an application, gave it a user interface, responded to mouse input and generated text output.
 
-The top-most attribute should be called "Display Format", and the current value will be decimal. This means that whatever the internal value is, the value displayed will be in decimal format. Click on the value and you will see a small menu appear. Select the value "Hex" from the list - you have now changed the display format to hexadecimal. Hexadecimal numbers are often used in programming, and you will see a lot of hex numbers when working with musical devices or microprocessors.
+Let's modify the program by adding a second button. Unlock the patcher window, then use some of the steps we just did to add a second button. Connect the new button to the print object so that you make something like this:
 
-Close the inspector and lock the patch. Scroll the top number box, and see how the numbers in the lower box change. Hexadecimal digits go from 0 through 9, then A through F, giving us 16 digits for the base 16 number system. As you scroll the top box, scroll down to a negative number; you will notice that the lower number box fills with F's at the beginning. You can make the number box larger by hovering your mouse over the right edge of the object until a little box appears. That box is a resizing control; clicking and dragging on this box will make the number box longer.
+__image here__
 
-__insert pic here__
+Lock the patcher and click on either of the buttons - they each will produce the "bang" message in the Max Window.
 
-Let's say that we don't want the numbers to go into negative territory, since that makes for really large hex numbers. Select the top number box and open the inspector (with the Inspector option in the Object menu), scroll to the bottom of the attribute list and find the attribute labeled "Minimum Value". It is currently set to ; double-click on that value and change it to "0". This will restrict the number box values to non-negative numbers, preventing the display of too-large hex numbers.
+Let's modify the patch even further. Add a new button above the previous two buttons, and connect this new button's outlet to the inlet of both old buttons. The patch should look something like this:
 
-# Exercises:
-1. Create a new patch with three number boxes across the top, all connected to one number box at the bottom. Change all of the values, and make sure you understand why things change the way they do.
-2. Create a new patch that converts integer numbers into MIDI Note numbers. Hint: MIDI notes are limited to the range of 0-127, so you will want to prevent your input values from exceeding that range.
+__image here__
 
-# Friend Objects: The Math Operations
-Max has a set of objects that are dedicated to math operations. These include the + (plus), - (minus), * (times), / (divide) and % (modulo) objects.
+When you click on this new, top-most button, you will see that the connected buttons also fire, and that the Max Window shows two new bang messages. What's going on here?
 
-__insert pic here__
+The button object's output is the message "bang". In the world of Max, the "bang" message has a very important purpose: it tells the receiving object to do whatever it was designed to do. This bears repeating:
 
-Each of these objects performs a single math function, and allows you to put in an argument to set a fixed operand. Here is an example of a simple patch that will add 10 to any number:
+**The "bang" message tells the receiving object to do whatever it was designed to do**
 
-__insert pic here__
+The button object was designed to do two things: to light up whenever it was activated, and to send a bang message out of its outlet. Therefore, when a button receives a bang message, it acts just as if we had mouse-clicked it - it lights up, and it sends out a bang message.
 
-When you create one of these objects, you will notice that it includes a second inlet. This allows you to change the operand used in the calculation. Let's patch up an example, using the * (times) operator.
-
-Create a patch with two number boxes, each one connected to one of the inlets of a * object with an argument of 10. Connect the outlet of the * object to another number box. The results should look like this:
-
-__insert pic here__
-
-Lock the patch and change the top-left value to 20. You should see the output of the * object (as seen in the lower number box) change to 200. From this, we can see that numbers coming into the left inlet of the * object cause output to occur. Now change the value of the top-right object to 50. You will notice that nothing changes. What happened?
-
-The right inlet of a math object is called a "cold inlet". This means that it will accept information, but it won't generate output. When is really happening is that the object is taking in the number you send it, storing it as the new operand, and is waiting for input to come into the left inlet so it can now multiply it by 50. Change the top-left number box to 10, and you will now see that the result (500) is using the new operand value for the multiplication.
-
-Most people, at this point, wonder why the number inside the math object doesn't change to match the newly input value (of 50, in this case). What you are seeing is the difference between a default value and a dynamic value. The argument that you enter into the math object is the default value; it will remain the same every time you open the patch, and will give us a starting value for calculations. When we change the operand value (the top-right value), this is a dynamic change, representing a transient value change rather than a permanent one.
+Save your patch by selecting Save from the File Menu. You can place the saved patch anywhere you want, but most Max programmers will create a specific Max folder for all their patches. You might as well do the same - you are well on your way to Max stardom already!
 
 # Exercises
+It's time for some patching exercises. Please make the following patches:
 
-1. Create a new patch that takes one input number, and gives us the result of adding, subtracting, multiplying and dividing by 10. Have each result display in its own number box.
+1. Create a new patch that is similar to one above, but have a single button create eight bang messages to the Max Window. Once you can do that, use the Copy and Paste commands from the Edit Menu to modify the patch to output 16 bang messages.
 
-2. Modify the patch in exercise 1 to accept a second input that will change the operand in all of the calculations simultaneously. Hint: Dividing by zero is a bad idea in math, so you may want to limit the operand value to a positive number.
+2. Create a new patch that looks like this:
 
-# Friend Object: Slider
-Sometimes, you just want a simple user interface element for setting or displaying a value without showing an actual number. In this case, the slider object is the answer. You will find the slider object in the object palette (which you get with a double-click on a blank part of the patcher window), near the bottom left of the object set.
+__image here__
 
-__insert pic here__
+Pay close attention to which buttons are connected to which other buttons. Lock the patch and click on any button in the patch. Make sure you understand why you see the results that you will see.
 
-When you create a slider, it is fairly simple: it has a border and a little bar. This bar is the control; if you lock your patch and click-drag on this bar, you will see that it slides up and down via mouse control. Unlock your patch and connect the outlet of the slider to a new number box. Now lock the patch and change the slider value - you will see that it outputs a number based on the bar's position. By default, the slider object will produce (or show) numbers in the range from 0 to 127 (a parallel with the MIDI range of note values). You can change this to any range by selecting the object and changing the range value. Putting in a value of 500 will change the range to go from 0 to 499 (500 individual steps). You can also enter minimum values (which will change the starting point of your range) and a multiplier (which will perform an automatic multiplication of the output of your slider).
+# Friend Object: print
+I'd like to introduce the concept of "friend objects". This isn't traditional Max programming jargon, but it is appropriate for the way we are learning Max. A friend object is one that is useful when working with another object. We've already seen one of button's useful friend objects - the print object. Let's dig into that a bit more.
 
-# Exercise
-Create a new patch with a slider connected to a multiply object with an operand of 10. Connect the output of the multiply object to a number box. Lock the patch and move the slider. Is there any way that this is different from using a number box as input?
+The print object is incredibly useful, since it gives us the ability to see the output message generated by almost any object. When you begin building more complex Max patches, you will probably use the print object constantly, scattering it around your patch to report the output of important parts of your program. However, once you start outputting a lot of print messages, it will be difficult to know which print object is causing which message. In order to solve this problem, the print object allows you to tag the Max Window message with a name.
 
-# Related Objects
-All of the numbers we've worked with so far have been integer (whole) numbers. While these are useful, much of the interesting information is found between integers, in the world of floating point (fractional) numbers. Within Max, there is a separate stream of objects and procedures you use to work with floating point numbers.
+The way that you tell the print object to use this name is by adding an argument. The argument for an object is used to set up some data within an object that will be used in future processing. The way you add an argument to an object is by appending it to the object name, separated with a space. So, if I wanted to name my print object "puppy", I would add this as an argument to the print object. It would look like this:
 
-The first, and most important, object is the floating point number box (or flonum). This is in the palette next to the regular number box - its only differentiation is that it has a decimal point in it (signifying that it is for floating point numbers). Create a new patch with one of these flonum objects in it, and connect it to a print object. Lock the patcher and change the values in the flonum object - you will find that it works much like the standard number box.
+__image here__
 
-__insert pic here__
+Now, if I create a simple button-to-print patch with this puppy-print object, the output to the Max Window will change. Clicking on this:
 
-If you hook up a flonum to a math operation (such as * 10) and view the output (with another flonum), you will be surprised.
+__image here__
 
-__insert pic here__
+will give us this:
 
-The result is still integer output, it only has a decimal point tacked to the end of it. The reason this happens is because, even though you are giving it a floating point number, the math object thinks it needs to work with integer value. In order to switch it to work with floating point numbers, we have to give it a "hint". We do that by making the operand a floating point number. In this case, that would mean changing the "10" to a "10.0".
+__image here__
 
-__insert pic here__
+Now, create a new patch that looks like this:
 
-Now we get the values we expect.
+__image here__
 
-This is an important enough to put into bold print: If you want to end up with floating point data, every object in the calculation needs to be floating point!
+Lock the patch, click on the button and see if it matches your expectation. Click it again to make sure. Did you expect 2 to print before 1? Most people wouldn't, but this reveals one of the important ways that Max works. Two things can't happen at the same time, so some decision has to be made about which will happen first. In this case, Max saw that print 2 was to the right of print 1, and Max gives priority to the rightmost object. This is important to remember: when two things are supposed to happen at the same time, the one to the right will happen first.
 
-Finally, to get the slider to produce or show floating point numbers, we need to change one of its attributes. Create a new slider, select it and open its inspector. Find the attribute called "Float Output" and turn it on (by clicking on the check mark). Now connect the slider's output to a flonum and move it around. You will see that it outputs fractional values rather than just integers.
+Let's try another experiment. Create a new patch that looks like this:
 
-__insert pic here__
+__image here__
 
-# Exercise
-One of the classic Max exercises is to convert a Fahrenheit temperature into its Celsius equivalent. This is done by taking an input value, subtracting 32.0, multiplying by 5.0 then dividing the result by 9.0. Using a slider on the input and a flonum to show the results, try to create an F-to-C conversion patch.
+In order to make sure that the print objects are vertically aligned, select the two print objects and select Align from the Arrange menu. Now both objects have the same right-to-left orientation; which one do you think will fire first? Try it and see.
 
-# More on Trigger
-In the last lesson, we saw that the trigger object could produce output in a specified firing order. Trigger also has three more properties: it can pass data through (in the defined order), convert data to a specific type, and generate predefined data entered in as an argument.
+The print 2 object fires first again, telling us that, given the same horizontal location, Max will give priority to the lower of the two objects. Let's try one more experiment. Make a patch that looks like this:
 
-Create the following patch:
+__image here__
+Make sure that the print objects are all vertically aligned, then lock the patch and click the button. The print objects fire in reverse numeric order, telling us that Max is moving from bottom to top, then left to right. To express this as a rule-of-thumb, we would say: When one object sends a message to several other objects, it does so in right-to-left order, with bottom-to-top priority when objects are vertically aligned.
 
-__insert pic here__
+This is called the execution order of the objects, and is important to remember. Not paying attention to execution order can cause some mysterious bugs in your patches, so we will introduce it early and refer to it often!
 
-We have two different trigger objects: one with an integer number box for input, the other with a floating point input. In each case, the value is fed to a trigger ("t") object with the arguments "b i f". These arguments stand for "bang", "integer" and "float", and determine the output of the related outlet. If you enter a number into either of the number boxes, you will see that the results sent to the Max Window are of the appropriate type. If a number has to be converted, the object will do so automatically.
+# Exercises
+Here are two exercises to try:
 
-We can also force a specific value out of one of trigger's outlets. Build this patch:
+1. Using one button and four print objects, make a patch that shows four bang messages in numerical order.
 
-__insert pic here__
+2. Modify the patch from the previous exercise, but make it fire bang messages that produce the following order: 2 4 6 8.
 
-Now, a trigger object with the arguments "i f 20" will output an integer and a floating point number, but the first value that is produced will always be the integer number "20", since this is a static value provided as an argument. Also, notice that if you click on the button to send a bang into the trigger object, the default values of 0.000000 and 0 (plus the default "20") will be sent out the trigger object's outlets, since the bang message has no intrinsic numeric value.
+# Related Object: trigger
+Sometimes, we need to control the order of message creation. An important object that we can use is the trigger object - almost always abbreviated "t". The trigger object accepts input through its one inlet, then sends output through as many inlets as it has arguments. We are going to work with the trigger object a lot in the future, and we will see that it has many different function. However, for now, we are going to use "b" arguments: these tell the trigger object to output a bang out of its outlets. To get a trigger object that will produce five bangs, we create it with five "b" arguments:
 
-# Theory
-Earlier, we saw that the math objects only create output when numbers come into their left inlet. Numbers coming into the right inlet are stored, but don't generate any output. There is a name for this difference: the right inlet is called a "cold" inlet, and the left inlet is called a "hot" inlet. Remember: Hot inlets generate output, cold inlets do not.
+__image here__
 
-You can determine if an inlet is hot by hovering your mouse over the inlet; cold inlets will have a blue circle around them, while a red circle indicates a hot inlet. This works for every object, not just math objects. Whenever you are using a new object, you can always figure out the generation of output by checking the hot or cold status of the inlets.
+If you click on the top-most button, you will see that the input is send out to all five outlets and their respective buttons. Why would you do this? If allows you to be more explicit about your order of execution. The right-most trigger outlet will always fire first, and the output will continue from right-to-left for all five outlets. This way, you can move around the receiving objects (the buttons in this case) and still make sure they are firing in the order you expect them to.
 
-What do you do if you want to generate output when all you are changing is cold inlet data? This is a great place to use the trigger option with our new argument options. By using a "t b i" trigger, we can send the value to the right (cold) inlet of the + object, then send a bang message to the hot inlet - forcing a recalculation of the addition and output of the new value.
+To test this out, add five new print objects to the patch (naming each one, so we can see the firing order) and connect them to the buttons. You should be able to move the print and button objects, change their left-right and top-bottom order, and see that you always get the results you initially intended. In general, it is wise to use a trigger ("t") object any time you are attaching one object to multiple other objects and need the firing order to remain consistent.
 
-So how do we patch this? Here's an example:
+# Friend Object: delay
+Another friend object for button is the delay object. The name of the object tells us what it will do: it will receive a bang message and delay it for a period of time. Create a new patch that looks like this:
 
-__insert pic here__
+__image__
 
-You can change the top-left value and will get a standard calculation. Now, however, when you change the top-right value, it will also generation a new calculation with the new operand. Why is the argument set "b i" instead of "i b"? It's all part of the right-to-left scheme of Max: by putting the value to the right of the bang, it makes certain that the number gets to the object before the bang message forces the calculation. This is a pattern that we will see in many other instances.
+Click on the top button and watch. One second later, the bottom button lights up. The delay object in between the two buttons has delayed the bang message for one second. The "1000" argument for the delay object tells the object to hold the message for 1000 milliseconds (one second) before sending it on. As you can imagine, this is a useful message for changing the order that objects receive messages. Let's make a more complicated delay-based patch:
+
+__image__
+
+This gives us a holiday tree-like spectacle, blinking the lights from top to bottom in an order determined by the delay objects. Let's use the delay object in some exercises.
+
+# Exercises
+1. Use delay messages to create an oval racetrack of blinking button objects. Note: This is a good time to think about routing the output of one delay object into another delay object. Since the output of delay is "bang", and the expected input is "bang", they can connect directly without a problem. The other thing to watch out for is endless loops - if all objects are connected together, there isn't any way to shut them down!
+
+2. In order to get used to using milliseconds for timing (and believe me, it is used pervasively throughout Max), create a new patch with five button-delay-button combinations, but have them each delay a different delay time from the following list: 1/2 second, 1 second, 2 seconds, 5 seconds, 10 seconds.
