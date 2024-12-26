@@ -5,6 +5,8 @@ This is an introductory course, so some MSP (audio) and Jitter (video) functions
 
 __Note: With the help of Andrea Mazzariello, this series is undergoing a bit of a facelift for Max 7. Please bear with us during the transition.__
 
+__Note: James H working on Max 9 facelift!__
+
 # Things you should have available
 Since we stay focused on Max programming, there isn't a lot of software that will be required for using this course. Most importantly, you will need a working copy of Max/MSP/Jitter; you can download a 30-day trial from [here](https://cycling74.com/downloads "Cycling74 downloads"), with discounted versions available for students. Other than Max, you won't need any specific software. This coursework is system-agnostic, so you can be using either the Mac or Windows operating system without concern. This course is also as usable with Max for Live as it is for the standalone Max program, so having both Live and Max for Live is an option.
 
@@ -30,3 +32,14 @@ Each of the lessons in this course follow the same basic format:
 Each of these sections will include one or more proposed exercises, and it is important to have the students work through the exercises. Max, even more than most programming environments, is best learned through "doing". Plan on having sufficient time for your students to work through the exercises as you work through the text, and try to catch any missing information before you move to the next subject. All of the lessons build on earlier data, so if something isn't clear, it can subvert the entire course.
 
 Another technique that is critical is to have students watch you build Max patches and build them along with you. This over-the-shoulder or "patchalong" approach is much more informative than lecturing, so try to build in plenty of opportunity to allow your students to patch with you. Some concepts (like using shortcut keys for adding objects) are best reinforced by seeing them used over and over. Don't be scared to make mistakes! Making and fixing mistakes are a key concept in the interactive programming model of Max.
+
+# Links
+Here are some links that will be useful throughout this course:
+
+[The Cycling '74 site:](https://cycling74.com/ "Home of MAX") This is the main location for all things Max. There are downloads, tutorials and interviews with Max/MSP/Jitter users. There are also links to current projects on the web and user-created extensions to Max. Lots of useful information.
+
+[MaxObjects.com:](http://www.maxobjects.com/ "DEAD") A searchable database of Max objects, including a majority of the third-party objects created for the Max environment. If you are looking for an object that does something specific, MaxObjects.com is likely to be able to help.
+
+__Note: Link looks long gone. Is there a good replacement?__
+
+[Online Max Docs:](https://docs.cycling74.com/ "Max 9 documentation") An online version of all the documentation, tutorials and hint information that is normally included in Max. This is useful for wherever-you-are lookups, or for reference on a second machine when you are deep into programming. Another cool addition to your Max toolkit.
