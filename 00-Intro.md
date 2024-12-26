@@ -40,6 +40,6 @@ Here are some links that will be useful throughout this course:
 
 [MaxObjects.com:](http://www.maxobjects.com/ "DEAD") A searchable database of Max objects, including a majority of the third-party objects created for the Max environment. If you are looking for an object that does something specific, MaxObjects.com is likely to be able to help.
 
-__Note: Link looks long gone. Is there a good replacement?__
+__Note: Link looks long gone. [This thread](https://cycling74.com/forums/max-objects-database "thread") discusses and points users to the built-in Package Manager.__
 
 [Online Max Docs:](https://docs.cycling74.com/ "Max 9 documentation") An online version of all the documentation, tutorials and hint information that is normally included in Max. This is useful for wherever-you-are lookups, or for reference on a second machine when you are deep into programming. Another cool addition to your Max toolkit.
