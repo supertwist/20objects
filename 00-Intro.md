@@ -15,6 +15,7 @@ This course does not start at the most basic; it expects that the user has the m
 - How to launch Max
 - What patchcords represent
 - A basic concept of what Max is good at...
+
 Perhaps the easiest place to get this information is from the Max help and tutorial system. However, the video that is typically used to show how patching and object selection isn't currently available, so it might be best just to browse around YouTube looking at Max example videos to get a sense of how it works.
 
 # If You Are Teaching...
@@ -25,6 +26,7 @@ Each of the lessons in this course follow the same basic format:
 - "Related" objects are introduced and used.
 - Any relevant theory is discussed.
 - Links and ideas are provided for further study.
+
 Each of these sections will include one or more proposed exercises, and it is important to have the students work through the exercises. Max, even more than most programming environments, is best learned through "doing". Plan on having sufficient time for your students to work through the exercises as you work through the text, and try to catch any missing information before you move to the next subject. All of the lessons build on earlier data, so if something isn't clear, it can subvert the entire course.
 
 Another technique that is critical is to have students watch you build Max patches and build them along with you. This over-the-shoulder or "patchalong" approach is much more informative than lecturing, so try to build in plenty of opportunity to allow your students to patch with you. Some concepts (like using shortcut keys for adding objects) are best reinforced by seeing them used over and over. Don't be scared to make mistakes! Making and fixing mistakes are a key concept in the interactive programming model of Max.
