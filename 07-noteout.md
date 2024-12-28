@@ -74,6 +74,3 @@ Extend the note monitor to show all of the MIDI messages that are received by Ma
 Once you start working with MIDI, and especially when you are working with MIDI CC's, you will want access to a list of CC's and their use. You can find all of the gritty details from the MIDI Manufacturers Association, which provides a message [spec](https://midi.org/specs) at this site.
 
 However, when I really need a quick reference, I will almost always use the CC list found at TweakHeadz Lab or the list of commonly used CC's at [The Void](https://www.voidaudio.net/controller.html). Either of these are easier to deal with, and should help you alter the controls that you need. *Note: TweakHeadz Lab link appears to be gone.**
-
-www.tweakheadz.com/midi_controllers.htm
-http://www.voidaudio.net/controller.html
