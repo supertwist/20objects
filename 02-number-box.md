@@ -16,7 +16,7 @@ There is another way to enter numbers. With the patcher window still locked, cli
 
 Let's modify the patch by adding another number box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
 
-![02-04](https://github.com/user-attachments/assets/1a2206d9-6e51-4bc0-99a2-ebf7cda98097)
+__insert pic here__
 
 Lock the patch and change the value of the top number box. You will see that, as soon as you are done entering numbers (or, if you are scrolling the top box, at each value change), the second number box's value changes to match the first. What happened here? The value was sent from the outlet of the first number box, and received in the inlet of the second. When a number box receives a numeric message, it will change its value to match the input. It will also send the value out its outlet (thereby sending the number to the print object).
 
@@ -24,7 +24,7 @@ Also notice that if you change the value of the lower number box, it does not ch
 
 Let's continue modifying the patch by adding a button object and connecting it to the original number box. Your patcher window should look something like this:
 
-![02-05](https://github.com/user-attachments/assets/43d784f1-4f5e-4961-8d55-95ac77459a0b)
+__insert pic here__
 
 You can change the number box values, but if you stop and click on the button, you will see the current value sent to the Max Window. Remember that the button sends out a "bang" message, and that object that receives a bang will "do what it was designed to do". The thing that the number box was designed to do was to send out a numeric value. Hence, when you bang a number box, you get its value sent from its output.
 
