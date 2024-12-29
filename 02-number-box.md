@@ -1,22 +1,22 @@
 While it is fun to bang away at buttons, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
 
-![02-01](https://github.com/user-attachments/assets/9c59379c-6acc-4cd8-bb38-c3a842b5970c)
+# The number box object
 
 The number box object is another user-interface object. It allows us to input numbers, it can display numbers generated from other objects, it can temporarily store numbers and it can even help translate from one number system to another. Let's begin with a simple patch.
 
 Start the Max program and create a new patcher window, then double-click to bring up the palette. These three steps should already be second nature, since they are the first things we do to create almost any patch. Select the grey square with a darker triangle in it (but not the one with the dot); this will add a number box to our patch. Add a print object, and connect the outlet of the number box to the print object. Your patch should look something like this:
 
-![02-02](https://github.com/user-attachments/assets/fe2be881-2a6a-4eb2-b85b-8606026b6a5c)
+![02-01](https://github.com/user-attachments/assets/9c59379c-6acc-4cd8-bb38-c3a842b5970c)
 
 Lock the patcher, click on the number box and type a whole number. The number box acts as a numeric entry field. If you hit enter, or click outside the number box, you will see that entry is complete, and the number box outputs the value (as seen in the Max Window).
 
-![02-03](https://github.com/user-attachments/assets/106a43c5-2c16-4be0-b11c-9d1e76ea68dc)
+![02-02](https://github.com/user-attachments/assets/fe2be881-2a6a-4eb2-b85b-8606026b6a5c)
 
 There is another way to enter numbers. With the patcher window still locked, click on the number box and drag your mouse. You will see the number increment or decrement based on vertical motion. This scrolling mechanism is somewhat unique to the Max user interface, but it is a powerful and visual way to change values without using keystrokes. When you are scrolling the values, each new value will be sent out the outlet of the number box, and with a little scrolling you will quickly fill up the Max Window.
 
 Let's modify the patch by adding another number box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
 
-__insert pic here__
+![02-03](https://github.com/user-attachments/assets/106a43c5-2c16-4be0-b11c-9d1e76ea68dc)
 
 Lock the patch and change the value of the top number box. You will see that, as soon as you are done entering numbers (or, if you are scrolling the top box, at each value change), the second number box's value changes to match the first. What happened here? The value was sent from the outlet of the first number box, and received in the inlet of the second. When a number box receives a numeric message, it will change its value to match the input. It will also send the value out its outlet (thereby sending the number to the print object).
 
@@ -30,7 +30,7 @@ You can change the number box values, but if you stop and click on the button, y
 
 Let's make one more change to this patch. Unlock the patch and click on the lower number box to select it. Then select Inspector from the Object menu. A new window will appear with a bunch of object attributes and their current values.
 
-__insert pic here__
+![02-04](https://github.com/user-attachments/assets/8ee2c3d7-43f4-4f79-8389-51756775aa30)
 
 The top-most attribute should be called "Display Format", and the current value will be decimal. This means that whatever the internal value is, the value displayed will be in decimal format. Click on the value and you will see a small menu appear. Select the value "Hex" from the list - you have now changed the display format to hexadecimal. Hexadecimal numbers are often used in programming, and you will see a lot of hex numbers when working with musical devices or microprocessors.
 
