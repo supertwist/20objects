@@ -1,22 +1,22 @@
 While it is fun to bang away at buttons, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
 
-# The number box object
+![02-01](https://github.com/user-attachments/assets/9c59379c-6acc-4cd8-bb38-c3a842b5970c)
 
 The number box object is another user-interface object. It allows us to input numbers, it can display numbers generated from other objects, it can temporarily store numbers and it can even help translate from one number system to another. Let's begin with a simple patch.
 
 Start the Max program and create a new patcher window, then double-click to bring up the palette. These three steps should already be second nature, since they are the first things we do to create almost any patch. Select the grey square with a darker triangle in it (but not the one with the dot); this will add a number box to our patch. Add a print object, and connect the outlet of the number box to the print object. Your patch should look something like this:
 
-__insert number pic here__
+![02-02](https://github.com/user-attachments/assets/fe2be881-2a6a-4eb2-b85b-8606026b6a5c)
 
 Lock the patcher, click on the number box and type a whole number. The number box acts as a numeric entry field. If you hit enter, or click outside the number box, you will see that entry is complete, and the number box outputs the value (as seen in the Max Window).
 
-__insert console pic here__
+![02-03](https://github.com/user-attachments/assets/106a43c5-2c16-4be0-b11c-9d1e76ea68dc)
 
 There is another way to enter numbers. With the patcher window still locked, click on the number box and drag your mouse. You will see the number increment or decrement based on vertical motion. This scrolling mechanism is somewhat unique to the Max user interface, but it is a powerful and visual way to change values without using keystrokes. When you are scrolling the values, each new value will be sent out the outlet of the number box, and with a little scrolling you will quickly fill up the Max Window.
 
 Let's modify the patch by adding another number box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
 
-__insert console pic here__
+![02-04](https://github.com/user-attachments/assets/1a2206d9-6e51-4bc0-99a2-ebf7cda98097)
 
 Lock the patch and change the value of the top number box. You will see that, as soon as you are done entering numbers (or, if you are scrolling the top box, at each value change), the second number box's value changes to match the first. What happened here? The value was sent from the outlet of the first number box, and received in the inlet of the second. When a number box receives a numeric message, it will change its value to match the input. It will also send the value out its outlet (thereby sending the number to the print object).
 
@@ -24,7 +24,7 @@ Also notice that if you change the value of the lower number box, it does not ch
 
 Let's continue modifying the patch by adding a button object and connecting it to the original number box. Your patcher window should look something like this:
 
-__insert pic here__
+![02-05](https://github.com/user-attachments/assets/43d784f1-4f5e-4961-8d55-95ac77459a0b)
 
 You can change the number box values, but if you stop and click on the button, you will see the current value sent to the Max Window. Remember that the button sends out a "bang" message, and that object that receives a bang will "do what it was designed to do". The thing that the number box was designed to do was to send out a numeric value. Hence, when you bang a number box, you get its value sent from its output.
 
