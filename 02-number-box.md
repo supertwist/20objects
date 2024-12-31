@@ -24,7 +24,7 @@ Also notice that if you change the value of the lower number box, it does not ch
 
 Let's continue modifying the patch by adding a button object and connecting it to the original number box. Your patcher window should look something like this:
 
-__insert pic here__
+![02-04x](https://github.com/user-attachments/assets/33cb1252-fdda-417b-8666-5cd43d08b660)
 
 You can change the number box values, but if you stop and click on the button, you will see the current value sent to the Max Window. Remember that the button sends out a "bang" message, and that object that receives a bang will "do what it was designed to do". The thing that the number box was designed to do was to send out a numeric value. Hence, when you bang a number box, you get its value sent from its output.
 
