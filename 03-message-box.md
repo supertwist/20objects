@@ -11,25 +11,25 @@ The message box is another user interface object, but it is also the most versat
 
 Let's start by creating a simple patch to see how this works. The message box is the second object in the palette, and is displayed as an unbordered object box. When you select it from the palette, you are given an editing cursor to fill in its contents. Create a new message box and enter the word "test" in it. Connect the message box to a print object, creating a patch that looks like this:
 
-__image__
+![Screenshot 2025-01-09 at 2 46 23 PM](https://github.com/user-attachments/assets/0095ad01-9b2a-4a1b-8e66-fb267ea4e018)
 
 Now lock your patcher window and click on the message box. You will see (in the Max Window) that the contents of the message box - the "test" message - is displayed. When used in this way, the message box acts as if it were a button that will output its contents as a message. If you hook up a button to the left input of the message box, you will see that the message box also outputs its contents whenever it receives a bang message.
 
-__img__
+![Screenshot 2025-01-09 at 2 46 48 PM](https://github.com/user-attachments/assets/0060b7ee-1f72-440b-827c-190128763dd1)
 
 Now let's see what happens when a message box receives a message other than a bang message. Connect a number box to a "message received" message box, and connect the message box to a print object. Your patch should look something like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 47 43 PM](https://github.com/user-attachments/assets/799bb087-d02a-4d71-ae34-8fb52743f3cc)
 
 If you click and drag on the number box, it will create numeric messages sent to the message box. However, these numbers do not cause the output of the message box to change - the output is still the "message received" contents of the object. In order to tell the message box to pass through the data that it receives, we need to use a special identifier: the "$n" value. Message boxes treat the symbol "$1" through "$9" in a special way - replacing the identifier with incoming data. Modify your patch to include the $1 identifier in the message, making something that looks like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 48 05 PM](https://github.com/user-attachments/assets/d9ffea0e-cb1e-4062-92e1-9cd9852616a3)
 
 Now, when a new numeric value is received by the message box, it changes the $1 identifier to that values and outputs a new message. If you enter the number 50, the output of the message box will be: "message received 50".
 
 Message boxes can hold any kind of value: numeric or text (called symbols when used in this way). So, if you wanted to create a patch that only allowed three different numeric values, you could create something like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 48 47 PM](https://github.com/user-attachments/assets/9d392f40-1515-4ff4-a974-915f9d2a5694)
 
 Message boxes can also hold a more complex form of data called a list. A list is a combination of symbols and numbers that move together as a single message. A good example might be a set of MIDI data for a keyboard. The note number, velocity and MIDI channel all need to move around your patch in lockstep. Rather than have them running along parallel lines, you can combine them as a list and they will stay together as a single message.
 
@@ -37,15 +37,15 @@ When working with incoming lists, the $n messages become more important. The num
 
 Let's make a patch that constructs a list and reorders it using only number boxes and message boxes. Start with a number box, and have it move into a message box that constructs a three-number list. Have the second number change to the incoming value, like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 50 04 PM](https://github.com/user-attachments/assets/20c2e272-eba5-47a3-84e9-c70d91d3d6bf)
 
 In a second message box, make the first element the number 100, then use the first two elements of the incoming list, like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 50 47 PM](https://github.com/user-attachments/assets/1deb4b93-463c-41bd-8f01-a47b9a59a295)
 
 Finally, in a third message box, reverse the order of the three list elements using the $1, $2 and $3 identifiers. Send the results to a print object, creating a patch that should look like this:
 
-__img__
+![Screenshot 2025-01-09 at 2 52 18 PM](https://github.com/user-attachments/assets/c97d5563-95f9-478a-a61e-c7211a5ddc54)
 
 As you change the value of the number box, you should see the Max Window displaying a three element list in the form of "0 nn 100", where nn is the value that you put into the number box.
 
