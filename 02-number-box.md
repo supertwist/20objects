@@ -47,17 +47,17 @@ Let's say that we don't want the numbers to go into negative territory, since th
 # Friend Objects: The Math Operations
 Max has a set of objects that are dedicated to math operations. These include the + (plus), - (minus), * (times), / (divide) and % (modulo) objects.
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 03 02 PM](https://github.com/user-attachments/assets/b1ef453d-8e28-48f3-ab50-8011e3200484)
 
 Each of these objects performs a single math function, and allows you to put in an argument to set a fixed operand. Here is an example of a simple patch that will add 10 to any number:
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 05 09 PM](https://github.com/user-attachments/assets/97461d5c-dd22-4dd1-a6c7-4cdb63a56df2)
 
 When you create one of these objects, you will notice that it includes a second inlet. This allows you to change the operand used in the calculation. Let's patch up an example, using the * (times) operator.
 
 Create a patch with two number boxes, each one connected to one of the inlets of a * object with an argument of 10. Connect the outlet of the * object to another number box. The results should look like this:
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 07 10 PM](https://github.com/user-attachments/assets/aaf9e874-2f4f-41b9-82b4-31221728f75b)
 
 Lock the patch and change the top-left value to 20. You should see the output of the * object (as seen in the lower number box) change to 200. From this, we can see that numbers coming into the left inlet of the * object cause output to occur. Now change the value of the top-right object to 50. You will notice that nothing changes. What happened?
 
@@ -74,7 +74,7 @@ Most people, at this point, wonder why the number inside the math object doesn't
 # Friend Object: Slider
 Sometimes, you just want a simple user interface element for setting or displaying a value without showing an actual number. In this case, the slider object is the answer. You will find the slider object in the object palette (which you get with a double-click on a blank part of the patcher window), near the bottom left of the object set.
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 12 33 PM](https://github.com/user-attachments/assets/89e12317-47a6-4fe7-8153-b248715badae)
 
 When you create a slider, it is fairly simple: it has a border and a little bar. This bar is the control; if you lock your patch and click-drag on this bar, you will see that it slides up and down via mouse control. Unlock your patch and connect the outlet of the slider to a new number box. Now lock the patch and change the slider value - you will see that it outputs a number based on the bar's position. By default, the slider object will produce (or show) numbers in the range from 0 to 127 (a parallel with the MIDI range of note values). You can change this to any range by selecting the object and changing the range value. Putting in a value of 500 will change the range to go from 0 to 499 (500 individual steps). You can also enter minimum values (which will change the starting point of your range) and a multiplier (which will perform an automatic multiplication of the output of your slider).
 
@@ -86,23 +86,23 @@ All of the numbers we've worked with so far have been integer (whole) numbers. W
 
 The first, and most important, object is the floating point number box (or flonum). This is in the palette next to the regular number box - its only differentiation is that it has a decimal point in it (signifying that it is for floating point numbers). Create a new patch with one of these flonum objects in it, and connect it to a print object. Lock the patcher and change the values in the flonum object - you will find that it works much like the standard number box.
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 31 45 PM](https://github.com/user-attachments/assets/be91421d-65e6-4e5a-902e-5d7818c0d4db)
 
 If you hook up a flonum to a math operation (such as * 10) and view the output (with another flonum), you will be surprised.
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 20 09 PM](https://github.com/user-attachments/assets/37fe7fd8-6e2c-45aa-aae0-98de124deebb)
 
 The result is still integer output, it only has a decimal point tacked to the end of it. The reason this happens is because, even though you are giving it a floating point number, the math object thinks it needs to work with integer value. In order to switch it to work with floating point numbers, we have to give it a "hint". We do that by making the operand a floating point number. In this case, that would mean changing the "10" to a "10.0".
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 21 41 PM](https://github.com/user-attachments/assets/a2ac31c3-0272-4f74-9e2f-5b89de68e9b0)
 
 Now we get the values we expect.
 
-This is an important enough to put into bold print: If you want to end up with floating point data, every object in the calculation needs to be floating point!
+This is an important enough to put into bold print: **If you want to end up with floating point data, every object in the calculation needs to be floating point!**
 
 Finally, to get the slider to produce or show floating point numbers, we need to change one of its attributes. Create a new slider, select it and open its inspector. Find the attribute called "Float Output" and turn it on (by clicking on the check mark). Now connect the slider's output to a flonum and move it around. You will see that it outputs fractional values rather than just integers.
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 25 04 PM](https://github.com/user-attachments/assets/ea1211b5-c00d-4d4d-9381-fca3eb3a1469)
 
 # Exercise
 One of the classic Max exercises is to convert a Fahrenheit temperature into its Celsius equivalent. This is done by taking an input value, subtracting 32.0, multiplying by 5.0 then dividing the result by 9.0. Using a slider on the input and a flonum to show the results, try to create an F-to-C conversion patch.
@@ -112,13 +112,13 @@ In the last lesson, we saw that the trigger object could produce output in a spe
 
 Create the following patch:
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 30 27 PM](https://github.com/user-attachments/assets/8d872eae-a132-4ce7-bca0-33e56e09fa46)
 
 We have two different trigger objects: one with an integer number box for input, the other with a floating point input. In each case, the value is fed to a trigger ("t") object with the arguments "b i f". These arguments stand for "bang", "integer" and "float", and determine the output of the related outlet. If you enter a number into either of the number boxes, you will see that the results sent to the Max Window are of the appropriate type. If a number has to be converted, the object will do so automatically.
 
 We can also force a specific value out of one of trigger's outlets. Build this patch:
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 35 45 PM](https://github.com/user-attachments/assets/f060b26f-3b04-4d3e-9496-0693883eb902)
 
 Now, a trigger object with the arguments "i f 20" will output an integer and a floating point number, but the first value that is produced will always be the integer number "20", since this is a static value provided as an argument. Also, notice that if you click on the button to send a bang into the trigger object, the default values of 0.000000 and 0 (plus the default "20") will be sent out the trigger object's outlets, since the bang message has no intrinsic numeric value.
 
@@ -131,6 +131,6 @@ What do you do if you want to generate output when all you are changing is cold 
 
 So how do we patch this? Here's an example:
 
-__insert pic here__
+![Screenshot 2025-01-09 at 2 35 45 PM](https://github.com/user-attachments/assets/1185b828-f69d-4daa-8197-3cdb2dcf96c5)
 
 You can change the top-left value and will get a standard calculation. Now, however, when you change the top-right value, it will also generation a new calculation with the new operand. Why is the argument set "b i" instead of "i b"? It's all part of the right-to-left scheme of Max: by putting the value to the right of the bang, it makes certain that the number gets to the object before the bang message forces the calculation. This is a pattern that we will see in many other instances.
