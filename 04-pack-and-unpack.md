@@ -5,24 +5,25 @@ The pack object is our first, and most used, option. The pack object allows you 
 
 Start by creating a new patcher window, then adding five integer number boxes. Then add a pack object with five zeroes as arguments. This will create a pack object with five inlets. Connect the five number boxes to the pack object, and connect the pack outlet to a print object. Your patch should look like this:
 
-__img__
+![Screenshot 2025-01-15 at 8 13 40 AM](https://github.com/user-attachments/assets/15d6e45f-41a3-4bca-9b65-f2da45621c2b)
 
 When you connected the number boxes, you should have noticed that only the leftmost inlet is a "hot" inlet - all of the others are "cold", meaning that they will collect input but not generate output. You can verify this by entering values into the number boxes; the only time that a list is output is when a value is sent into the left inlet.
 
 How can we force any of the inputs to generate a message? Perhaps the easiest way is to connect the "cold"-connected number boxes to a button object so that it generates output every time a value changes. One thing to double check, though, is that the value gets into the pack object before the bang message is received. This is what we normally do to generate a pack output:
 
-__img__
+![Screenshot 2025-01-15 at 8 14 46 AM](https://github.com/user-attachments/assets/fa7605e1-bc9a-474b-9932-ff3f2aade62e)
 
 > [!NOTE]
 > This is a pattern that we will often use for forcing output. Remember it!
 
 The arguments that we use do two things: they determine the type of data that is expected from an inlet, and acts as a default for the value. If we build a pack object with some useful number, but only change one of them, you can easily create complex messages with a few replaceable values.
 
-__img__
+![Screenshot 2025-01-15 at 8 20 54 AM](https://github.com/user-attachments/assets/0589f09b-091e-4543-96f7-bec22c9215e3)
+
 
 We can also feed a list into one of the inlets of a pack object to load up the values. This exposes one of the interesting features of using lists: if an object has multiple inlets, feeding it a list will load up the inlet contents in order. This is another concept that is easier to show than to explain, so let's create a patch:
 
-__img__
+![Screenshot 2025-01-15 at 8 21 55 AM](https://github.com/user-attachments/assets/ea70aec6-01b3-4db5-842d-6c2472a37c79)
 
 If you click on any of the message boxes, a list is sent into one of the pack inlets. You will notice that the contents of the message box's list is used, in order, to fill the pack object's values. The left message box is most interesting: it sends a list into the first inlet, while loads all the values then creates and output list without requiring a bang. Do you remember why a bang message isn't required? (The answer is: because that is a "hot" inlet.)
 
