@@ -120,4 +120,4 @@ The reason that this was left until the end was that it has the potential to pro
 # More Information
 As we've seen, the help files for objects are powerful tools - they provide us with template code as well as showing us how to use an object. You may want to dig back into the earlier lessons and look at the help files for each of the objects we covered; you will find additional options and functions hidden within the help system.
 
-Perhaps the master of list manipulation is Peter Elsea, a professor at the Music Center of UC-Santa Cruz. He has a set of list manipulation objects called the Lobjects that take the ideas presented above and works them to a tee. His work can be found [here.](http://peterelsea.com/lobjects.html)
+Perhaps the master of list manipulation is **Peter Elsea,** a professor at the Music Center of UC-Santa Cruz. He has a set of list manipulation objects called the Lobjects that take the ideas presented above and works them to a tee. His work can be found [here.](http://peterelsea.com/lobjects.html)
