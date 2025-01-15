@@ -13,8 +13,8 @@ How can we force any of the inputs to generate a message? Perhaps the easiest wa
 
 __img__
 
-[!NOTE]
-This is a pattern that we will often use for forcing output. Remember it!
+> [!NOTE]
+> This is a pattern that we will often use for forcing output. Remember it!
 
 The arguments that we use do two things: they determine the type of data that is expected from an inlet, and acts as a default for the value. If we build a pack object with some useful number, but only change one of them, you can easily create complex messages with a few replaceable values.
 
