@@ -97,7 +97,7 @@ Let's check out all of the functionality of the zl in slice mode by using the re
 
 The zl object also has an unused outlet. If we hover our mouse over that outlet, we can see that it tells us we can get the "right slice of input list". Connect a print object named "remainder" to that outlet, then lock the patch and click on the message box. The Max Window will now have two entries, one with the first three elements (because our 3 value from above is still active), and a second with "137 bap" - the remainder of the list.
 
-__img__
+![Screenshot 2025-01-15 at 1 11 08 PM](https://github.com/user-attachments/assets/56ac8dc2-4ecc-4298-b32b-7261ffb8b221)
 
 The nice thing about using the zl object, rather than the unpack object or replaceable parameters, is that the zl object doesn't care about the length of the incoming list - it will do its set job regardless of list length. If not enough elements come in to process (like if you did a "slice 10", but the incoming list only had five elements), it will work with as much as it was given. This is very powerful as you build larger patches - you will be able to accomplish a task without having to constantly verify every list that is sent, and can use it in cases where the data is widely variant.
 
@@ -113,7 +113,7 @@ Create a patch that has five different message boxes (filled with lists) feeding
 # Related object: pak
 It is going to seem sort of weird to have saved this for the end, but it was done to prevent mishaps with overproduction of messages. There is a variant of the pack object, called pak, that is identical to pack in every way except one: all of its inputs are "hot", and you don't have to mess around with bang object to generate list messages. Here is an example:
 
-__img__
+![Screenshot 2025-01-15 at 1 12 36 PM](https://github.com/user-attachments/assets/e0cc92e2-d903-434c-b922-746de294ab8b)
 
 The reason that this was left until the end was that it has the potential to produce a lot of unwanted messages. Let's say that you were building up a list of colors for an object. In the patch above, you would send a new color command to the object each time you entered a value, and might get unwanted interim color states. The pak object can be very efficient and handy when it is being used for a specific purpose. But to gain simplicity you lose control of the object's output.
 
