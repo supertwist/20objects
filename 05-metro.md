@@ -3,25 +3,25 @@ So far, everything that we've done has required user action (mouse clicking, dra
 # The metro object
 The most popular object for generating events is the metro object. Given an interval, it will create bang messages in a metronomic fashion (and hence its name). Create a patch like this:
 
-__img__
+![Screenshot 2025-01-15 at 1 18 45 PM](https://github.com/user-attachments/assets/a846d320-d51f-4687-a8a8-861e49e1a03a)
 
 The argument for the metro object is the interval between events - in milliseconds. A millisecond is 1/1000th of a second, so the argument of 500 represents half-second intervals. Click on the "1" message box to start the metro output, and click on the "0" message box to stop it. The metro object uses numbers, rather than symbols (like "stop" and "start") to turn it on and off, allowing us some flexibility in the objects we can use for the on/off function.
 
 You probably noticed that there is a second inlet to the metro object. As you may have already guessed, this allows us to change the metro's event interval with a numeric entry (such as a number box). Let's connect an integer number box to the metro to see how it works:
 
-__img__
+![Screenshot 2025-01-15 at 1 19 29 PM](https://github.com/user-attachments/assets/bd259470-9690-4ca9-998a-73e6e4a1cce3)
 
 Now you can change the interval by entering a new value into the number box. Very small numbers will create very fast pulses (in some cases, faster than the output button can display them), while very long intervals create very slow output times. If you are used to working with "tempo" for timing, you may find this counter-intuitive. However, it is important to remember that this is "programming", and programs prefer to work with millisecond timing.
 
 There is one thing to consider when setting the interval for a metro: the point at which a new interval is used. Here's an experiment: Take our patch and change it to use two different interval times: 500 milliseconds (or ms) and 4000 ms. This will allows us, with a single click, to change between a half-second and four-second interval.
 
-__img__
+![Screenshot 2025-01-15 at 1 22 00 PM](https://github.com/user-attachments/assets/bc8daf2e-7b2d-47b0-bedc-7301e5b1e8f3)
 
 Start the metro (by clicking on the "1" message box) - it starts using the argument's interval. Now, click on the "4000" message box, which changes the interval to a 4 second clocking pattern. It reacts almost instantly. Now, click on the "500" message box; you will see that the new interval doesn't get activated until the next 4 second interval is complete. The reason this happens is that the metro is actually "scheduling" the next bang message, and doesn't schedule a new message until the current one is complete. So if you want to use widely disparate metro intervals and want them to change immediately, you will have to restart the metro any time you change the timing.
 
 Luckily, we already know how to do this. By having an interval change message also force a restart of the metro, we can enforce immediate change to the timing. Here is an example patch that does just that:
 
-__img__
+![Screenshot 2025-01-15 at 1 21 19 PM](https://github.com/user-attachments/assets/9c655a53-cc21-4f84-a96f-c0917735e031)
 
 # Exercise
 
@@ -33,15 +33,15 @@ Create a patch that uses a metro to produce the following phrase:
 
 One object that you will see next to virtually every metro is the toggle object. This is a checkbox-like object, and produces a 1 when turned on, and a 0 when turned off. You can see why this would be useful for metro - that is exactly what the metro needs to turn it on and off. Let's replace the message boxes from our earlier patch with a toggle object:
 
-__img__
+![Screenshot 2025-01-15 at 1 22 59 PM](https://github.com/user-attachments/assets/161ef70a-adeb-4b3e-8848-20dc89cdd818)
 
 This is a lot more obvious, and makes our patch more user-friendly. The toggle object has another, less-obvious function: when it receives a bang message, it will reverse its current setting. Connect a toggle to the output of the display button, turn on the metro, and watch the toggle change its state:
 
-__img__
+![Screenshot 2025-01-15 at 1 23 30 PM](https://github.com/user-attachments/assets/cd84711e-469e-436f-9859-9f8a18bc4292)
 
 Finally, since the toggle is really a numeric (0 and 1) object, we can send it a number to specifically set its state. If we connect a few message boxes to the inlet of the toggle, we can force it to a specific state on demand:
 
-__img__
+![Screenshot 2025-01-15 at 1 25 03 PM](https://github.com/user-attachments/assets/b03ce352-9b54-44a5-8117-bd85846ba760)
 
 # Exercise
 
@@ -50,15 +50,15 @@ Create a patch with several metro objects. Have each metro start with a differen
 # Friend Object: counter
 Another object that you will often find near a metro object is the counter object. As its name implies, it counts things - bang messages, to be precise. Each time the counter object receives a bang message, it will increment its counter and output the new value. Here is a simple example:
 
-__img__
+![Screenshot 2025-01-15 at 1 25 46 PM](https://github.com/user-attachments/assets/c90ff3ae-e87e-4afd-9826-2c54f99849f3)
 
 The counter object takes a varying number of arguments, based on what you need to tell is. If you give it a single numeric argument, it will count from 0 to the number you enter:
 
-__img__
+![Screenshot 2025-01-15 at 5 07 01 PM](https://github.com/user-attachments/assets/7b630e1f-e6de-48c3-8160-a506b312cf77)
 
 If you give it two numbers, it will count starting at the first value until it reaches the second value:
 
-__img__
+![Screenshot 2025-01-15 at 5 07 42 PM](https://github.com/user-attachments/assets/c4d15600-1e5e-4832-b598-4055a67b09bd)
 
 Finally, if you give it three values, it will use the first as a "direction" flag, with the following options:
 
@@ -72,7 +72,7 @@ Finally, if you give it three values, it will use the first as a "direction" fla
 
 In addition to using arguments, you can also send messages to the counter object to change its settings, or use some of the inlets to directly control the current counter value. Let's make a circular light show to show how this works:
 
-__img__
+![Screenshot 2025-01-15 at 5 09 03 PM](https://github.com/user-attachments/assets/bfa870af-9b41-4efc-9b75-ed43f8e32066)
 
 The left outlet of the counter object sends the value, which we decode using a select object and display using buttons. The other outputs of the counter are for tracking the "carry" flag - the flag that shows we have hit our maximum. We won't use this in our examples, but the counter help file can show you how it is used.
 
