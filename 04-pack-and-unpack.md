@@ -29,13 +29,13 @@ If you click on any of the message boxes, a list is sent into one of the pack in
 
 Remember that we said that the arguments of the pack object determine the type of data expected in an inlet? Let's play with that a little more. Create the following patch:
 
-__img__
+![Screenshot 2025-01-15 at 11 50 17 AM](https://github.com/user-attachments/assets/5115e397-34fc-4c72-80b1-1a72c77ad791)
 
 Our pack object has a mix of symbols, integers and floating-point number, giving us a mixed-data list. Each of the inlets has an input connected to it. You can test the function of the pack object by entering some data, then either clicking on the "generate" button or by entering something into the left inlet. The values remain true to their type, producing symbol, float or integer values for the list output.
 
 What happens when we send the wrong type into a pack inlet? The answer is: it depends. The results is described by the following table:
 
-__img__
+![L04table](https://github.com/user-attachments/assets/2cf5dd21-86ed-4180-a327-beb07d1dd0a5)
 
 So, for example, if you send an integer into a float inlet, the value (say, 6) will be converted into a floating-point value (6.0 in this case) and inserted into the list. Most of these will make sense, but one to watch out for is this: the truncation of a floating point number into an integer. You might expect a number like 6.9 to be rounded up to 7, but the result will actually be 6 - the decimal part of the number is stripped right off.
 
@@ -49,7 +49,7 @@ In our last lesson, we used the $1 replaceable parameter to get a value and inse
 
 Create the following patch to see how this works:
 
-__img__
+![Screenshot 2025-01-15 at 11 54 28 AM](https://github.com/user-attachments/assets/7a2a1277-55b6-4d4e-8764-5d168c33d3f2)
 
 You can see that the output of the pack object feeds a number of message boxes, each of which uses one of the $n parameters to create a new value. However, there are a few problems with this:
 
@@ -63,13 +63,13 @@ A companion object to the pack object is the unpack object. It is very similar t
 
 Now, when a list comes in, the pieces are split into individual messages and sent out the appropriate outlet. Let's make a simple patch that is sort of useless but shows how things operate.
 
-__img__
+![Screenshot 2025-01-15 at 11 55 26 AM](https://github.com/user-attachments/assets/4bef99a6-615c-42db-893f-d94ef6c74250)
 
 As you can see, anytime we enter a number, a list is created, sent out the pack object, received by the unpack object and split apart again. This may not seem very interesting, but it is the key to many different operations in Max.
 
 The unpack message can decode messages coming from any object that creates a list. For example, if we create a list in a message box, we can easily pull it apart with an unpack object - as long as we know the element types in advance. Here's an example of a patch that builds lists in three different ways, but decodes them all with a single unpack object:
 
-__img__
+![Screenshot 2025-01-15 at 12 01 54 PM](https://github.com/user-attachments/assets/d5c77b96-ea3e-4cac-9371-04a2d6761e97)
 
 # Exercises
 1. Create an unpack object that will take a variety of lists and output the third value of the list. You will want to make the third list value consistent in type through all of your input.
@@ -83,7 +83,7 @@ How could one object perform all of these functions? The zl object takes an argu
 
 Create an instance of the zl object (by creating a generic object and entering zl into it), selecting it, and then selecting "Open zl help" in the help menu. The following screen appears:
 
-__img__
+![Screenshot 2025-01-15 at 12 02 52 PM](https://github.com/user-attachments/assets/d7f1f087-08ff-4b86-8f8a-c0f6e9ed1522)
 
 Let's look at one of the variations of zl use. Perhaps the most often used mode is the "slice" mode, where a list is split into two parts for separate processing. You will find an example of zl slice at the bottom left of the help file screen, using a list with "beep 1 2.3 137 bap" as the test list.
 
