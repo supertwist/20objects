@@ -1,4 +1,4 @@
-Many of the things we need to do involve numbers, but even more will use text within Max: words used as commands, words used to set parameters and words used for user display purposes. Having an object that can use text as well as numbers is important working with Max, and is accomplished using the message box.
+ Many of the things we need to do involve numbers, but even more will use text within Max: words used as commands, words used to set parameters and words used for user display purposes. Having an object that can use text as well as numbers is important working with Max, and is accomplished using the message box.
 
 # The message box object
 
@@ -56,7 +56,7 @@ As you change the value of the number box, you should see the Max Window display
 
 Up to this point, whenever we wanted to display a message, we would send it to the Max Window using the print object. However, sometimes this is undesirable - you may want to see the message right in your patcher window. This is what the right inlet of the message box does: it allows you to fill in a message box with the contents of an incoming message. Create the following patch:
 
-__img__
+![Screenshot 2025-01-20 at 1 53 32 PM](https://github.com/user-attachments/assets/22bc8353-962f-49c1-9d6f-111a56712070)
 
 If you lock the patch and click on any of the top message boxes, you will see that the bottom message box will display this message. This is a powerful way to see the messages that are flowing through your patch, and is very useful for debugging when the Max Window might get too stuffed with messages.
 
@@ -67,7 +67,7 @@ We've seen how we build up a complex message using the prepend and append comman
 
 These are two standard objects that take arguments for the data you want appended or prepended. A good example patch looks like this:
 
-__img__
+![Screenshot 2025-01-20 at 1 39 51 PM](https://github.com/user-attachments/assets/47641d68-5887-4095-9a46-00980df6e99d)
 
 We are sending all of our message boxes into a prepend object that puts the phrase "Front" at the beginning of the list, then sending that message into an append object that puts the phrase "Back" at the end of the list. Notice that this works whether we are sending it lists of symbols, lists of numbers or even a single numeric value.
 
@@ -77,18 +77,18 @@ Make a patch that accepts five different inputs of your choice, and puts the phr
 # Related Object: the comment
 Sometimes we want to put textual information into our patch as a reminder of something, or as instructions for someone that wants to run our patch. This is what the comment box is for:
 
-__img__
+![Screenshot 2025-01-20 at 1 40 33 PM](https://github.com/user-attachments/assets/f470ed75-2a0c-4e4c-9216-a51ab598a1ea)
 
 When a patcher window is unlocked, the comment object will have a dotted border around it, showing us where the comment object is located. When the patcher window is unlocked, however, the border disappears, telling the user that it doesn't respond to user interaction. Commenting a patch is important, especially as things get more and more complex. Generally, it is useful to provide comments that remind you, the programmer, what you were doing in a section of a patch, and to put information about where to start for new users of your patch.
 
 A good example of some simple commenting might be a patch like this:
 
-__img__
+![Screenshot 2025-01-20 at 1 43 40 PM](https://github.com/user-attachments/assets/bee061a9-2341-45cf-992b-45549ff2b300)
 
 # Theory
 One of the most powerful functions of the message box is to create commands that will alter the behavior or appearance of another object. Let's use a floating point number box and a message box to create the command necessary to change the background color of a regular number box. Create a patch that looks like this:
 
-__img__
+![Screenshot 2025-01-20 at 1 45 18 PM](https://github.com/user-attachments/assets/6a7ed020-8abd-4ed3-9dc2-438fb00a3df8)
 
 You will notice that we are using a floating point number box (flonum) as input to the message box, which is building up the message "bgcolor nn 0. 0. 1.". While we've not seen this before, the "bgcolor" command to a user interface object will change its background color. The four numbers needed for this color change are Red, Green, Blue and Alpha (transparency) values, all with values between 0. (off) and 1. (on). This is a common format for colors, and is used with all Max user interface objects.
 
@@ -101,12 +101,12 @@ We talked about groups of data tied together as lists, and we talked about comma
 
 If we connect two number boxes together, any change to the first number box will cause two things to happen: the value of the second number box will change, and the second number box will output that new value:
 
-__img__
+![Screenshot 2025-01-20 at 1 46 51 PM](https://github.com/user-attachments/assets/0e752b8c-706b-4600-b7da-6fce2adfdc73)
 
 But what if we want to change the value without sending out a message? This is where a set message can help. Change the above patch to look like this:
 
-__img__
+![Screenshot 2025-01-20 at 1 47 51 PM](https://github.com/user-attachments/assets/74064393-c213-4bde-bfe2-a48794606f16)
 
 Now, whenever we change the value with the top number box, the bottom box's value changes, but it doesn't output the new value. We can see this, because the connected message box doesn't change. How would we then display the new value? By connecting a button or a bang message to the inlet of the second number box. We can change values all day without outputting the new value; it isn't until we click on the button or the bang message that the bottom message box is updated.
 
-__img__
+![Screenshot 2025-01-20 at 1 49 12 PM](https://github.com/user-attachments/assets/12d78419-16cb-40f6-b399-e17d38c2e3f3)
