@@ -68,7 +68,8 @@ Finally, if you give it three values, it will use the first as a "direction" fla
 
 2 = "up-down": counts upward from low to high, then downward from high to low.
 
-*Hint: If you want a little pop-up menu to display these options, look in the counter help file...*
+> [!TIP]
+> Hint: If you want a little pop-up menu to display these options, look in the counter help file...
 
 In addition to using arguments, you can also send messages to the counter object to change its settings, or use some of the inlets to directly control the current counter value. Let's make a circular light show to show how this works:
 
