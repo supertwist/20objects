@@ -51,7 +51,7 @@ When you click on this new, top-most button, you will see that the connected but
 
 The button object's output is the message "bang". In the world of Max, the "bang" message has a very important purpose: it tells the receiving object to do whatever it was designed to do. This bears repeating:
 
-**The "bang" message tells the receiving object to do whatever it was designed to do**
+**The "bang" message tells the receiving object to do whatever it was designed to do.**
 
 The button object was designed to do two things: to light up whenever it was activated, and to send a bang message out of its outlet. Therefore, when a button receives a bang message, it acts just as if we had mouse-clicked it - it lights up, and it sends out a bang message.
 
