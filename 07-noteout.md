@@ -54,7 +54,7 @@ I'm sure that you are already sick of hearing your random sound generation using
 
 Now, using the slider, you can change the sound - giving your ears a break as needed!
 
-> [!NOTE]
+> [!IMPORTANT]
 > One important suggestion: turn off the metro's toggle before you close this patch. If you don't, some of your MIDI notes will surely get stuck, and you will really hate this patch!
 
 # Related Objects: midiin and midiparse
