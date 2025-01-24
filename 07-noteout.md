@@ -40,17 +40,17 @@ These two objects are commonly found together, and represent the easiest way to 
 
 First, let's change your exercise patch to use the midiformat/midiout combination. This is a pretty straight-forward operation, except that midiformat expects a list containing the note and velocity values rather than individual values. To make this list, it is easiest to use a pack object:
 
-
+![Screenshot 2025-01-24 at 10 13 55 AM](https://github.com/user-attachments/assets/84491934-89a8-4e54-830f-6e3e7d74939c)
 
 Alter your patch to match, then turn on the playback. You should hear the MIDI note playback just like you did with your original patch. Now, we will add a MIDI CC message to the mix. The most universally supported MIDI CC message is for controller 7, which controls the playback volume. This is somewhat different than the velocity setting, since it controls the synth volume rather than the playback velocity of an individual note. Let's use a slider object as a volume control, and built a patch that allows us to control the synth volume:
 
-![Screenshot 2025-01-24 at 10 13 55 AM](https://github.com/user-attachments/assets/84491934-89a8-4e54-830f-6e3e7d74939c)
+![Screenshot 2025-01-24 at 10 17 00 AM](https://github.com/user-attachments/assets/ef3e7b13-ea58-4dae-93f3-5b367c43f070)
 
 You will notice that the various changes that occur with different velocity levels are still heard, but the overall volume of playback is changed with the slider changes. The message box connected to the slider transforms its output to a list in the form of "7 nn", where nn is the current slider volume.
 
 I'm sure that you are already sick of hearing your random sound generation using the default piano sound. You could change this sound by connecting and using a MIDI synthesizer (and changing the patch using the front panel of the device), but we can also change the sound by sending program change messages. This uses the fourth inlet, and requires a number in the range of 0-127. A slider object is perfect for this, so let's add that to the patch to give us a change in sonic environment.
 
-![Screenshot 2025-01-24 at 10 17 00 AM](https://github.com/user-attachments/assets/ef3e7b13-ea58-4dae-93f3-5b367c43f070)
+![Screenshot 2025-01-24 at 10 18 52 AM](https://github.com/user-attachments/assets/5681d5fd-17bf-401e-bb92-f9bcb8ca6fbe)
 
 Now, using the slider, you can change the sound - giving your ears a break as needed!
 
