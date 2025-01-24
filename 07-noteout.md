@@ -54,7 +54,8 @@ I'm sure that you are already sick of hearing your random sound generation using
 
 Now, using the slider, you can change the sound - giving your ears a break as needed!
 
-*One important suggestion: turn off the metro's toggle before you close this patch. If you don't, some of your MIDI notes will surely get stuck, and you will really hate this patch!*
+> [!NOTE]
+> One important suggestion: turn off the metro's toggle before you close this patch. If you don't, some of your MIDI notes will surely get stuck, and you will really hate this patch!
 
 # Related Objects: midiin and midiparse
 Just like there are noteout, ctlout and pgmout objects that we've ignored (preferring to use midiformat and midiout), there are a set of "in" objects as well. We are going to forget about all of them and focus on a flexible input pairing: midiin and midiparse.
