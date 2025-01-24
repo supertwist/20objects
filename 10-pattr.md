@@ -1,6 +1,6 @@
 As our Max patches become more feature-filled, it becomes more important to find a way to access and save our settings for use the next time open the patch. While a simple preset mechanism is provided for small patches, it has fallen out of use in preference to "the pattr system". Using pattr is more than using a single object - it's really about buying into a system of objects used for creating and supporting presets.
 
-# The pattr object
+# The `pattr` object
 
 At its most basic level, the pattr object acts as an "alias" for another object. By attaching a pattr object to any other value-storing object, you can set or retrieve that object's contents remotely. We can do that by attaching a pattr object's middle outlet to a UI object.
 
