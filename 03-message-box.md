@@ -60,7 +60,8 @@ Up to this point, whenever we wanted to display a message, we would send it to t
 
 If you lock the patch and click on any of the top message boxes, you will see that the bottom message box will display this message. This is a powerful way to see the messages that are flowing through your patch, and is very useful for debugging when the Max Window might get too stuffed with messages.
 
-**Important Note: When you make a connection to the right inlet of a message box, you replace the message - but it doesn't output anything! This is one place that a lot of people have problems with, and you need to make sure you understand the use of the right inlet!**
+> [NOTE]
+> Important Note: When you make a connection to the right inlet of a message box, you replace the message - but it doesn't output anything! This is one place that a lot of people have problems with, and you need to make sure you understand the use of the right inlet!
 
 # Friend Objects: append and prepend
 We've seen how we build up a complex message using the prepend and append commands to the message box, but sometimes it is inappropriate to be changing a message box's contents: it may contain information that needs to remain stable, and just needs some formatting before it is displayed. Also, we may want to format a variety of messages in exactly the same way. In this case, you can use the append and prepend objects to format your output.
