@@ -21,7 +21,7 @@ We create this patch by following these steps:
 
 3. You will notice that the window has a toolbar above it with a number of images of object. Click on the button-like icon to drop down the selection palette, then select the first item - a `button`:
 
-![01-02](https://github.com/user-attachments/assets/227aa18b-d9df-4b56-9b15-91f6edbef9fb)
+![Screenshot 2025-01-24 at 7 14 25 PM](https://github.com/user-attachments/assets/8aca5c67-01d1-484b-b646-27af4ce4883d)
 
 Click on it (but not on any number that appears on top of the button); a button will be placed at the target point within your patcher window.
 
