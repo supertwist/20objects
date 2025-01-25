@@ -1,6 +1,6 @@
-While it is fun to bang away at buttons, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
+While it is fun to bang away at `buttons`, we need to get to the heart of Max programming - and that involves numbers. Much of the number handling within the program is actually encapsulated into a few objects, with the most important being the number box.
 
-# The number box object
+# The `number` box object
 
 The number box object is another user-interface object. It allows us to input numbers, it can display numbers generated from other objects, it can temporarily store numbers and it can even help translate from one number system to another. Let's begin with a simple patch.
 
@@ -8,13 +8,13 @@ Start the Max program and create a new patcher window, then double-click to brin
 
 ![02-01](https://github.com/user-attachments/assets/9c59379c-6acc-4cd8-bb38-c3a842b5970c)
 
-Lock the patcher, click on the number box and type a whole number. The number box acts as a numeric entry field. If you hit enter, or click outside the number box, you will see that entry is complete, and the number box outputs the value (as seen in the Max Window).
+Lock the patcher, click on the number box and type a whole number. The number box acts as a numeric entry field. If you hit **enter**, or click outside the number box, you will see that entry is complete, and the number box outputs the value (as seen in the Max Window).
 
 ![02-02](https://github.com/user-attachments/assets/fe2be881-2a6a-4eb2-b85b-8606026b6a5c)
 
 There is another way to enter numbers. With the patcher window still locked, click on the number box and drag your mouse. You will see the number increment or decrement based on vertical motion. This scrolling mechanism is somewhat unique to the Max user interface, but it is a powerful and visual way to change values without using keystrokes. When you are scrolling the values, each new value will be sent out the outlet of the number box, and with a little scrolling you will quickly fill up the Max Window.
 
-Let's modify the patch by adding another number box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
+Let's modify the patch by adding another `number` box above the previous one, and connecting its outlet to the inlet of the original number box. Your patch should look something like this:
 
 ![02-03](https://github.com/user-attachments/assets/106a43c5-2c16-4be0-b11c-9d1e76ea68dc)
 
@@ -45,7 +45,7 @@ Let's say that we don't want the numbers to go into negative territory, since th
 2. Create a new patch that converts integer numbers into MIDI Note numbers. Hint: MIDI notes are limited to the range of 0-127, so you will want to prevent your input values from exceeding that range.
 
 # Friend Objects: The Math Operations
-Max has a set of objects that are dedicated to math operations. These include the + (plus), - (minus), * (times), / (divide) and % (modulo) objects.
+Max has a set of objects that are dedicated to math operations. These include the `+` (plus), `-` (minus), `*` (times), `/` (divide) and `%` (modulo) objects.
 
 ![Screenshot 2025-01-09 at 2 03 02 PM](https://github.com/user-attachments/assets/b1ef453d-8e28-48f3-ab50-8011e3200484)
 
@@ -55,11 +55,11 @@ Each of these objects performs a single math function, and allows you to put in 
 
 When you create one of these objects, you will notice that it includes a second inlet. This allows you to change the operand used in the calculation. Let's patch up an example, using the * (times) operator.
 
-Create a patch with two number boxes, each one connected to one of the inlets of a * object with an argument of 10. Connect the outlet of the * object to another number box. The results should look like this:
+Create a patch with two number boxes, each one connected to one of the inlets of a * object with an argument of 10. Connect the outlet of the `*` object to another number box. The results should look like this:
 
 ![Screenshot 2025-01-09 at 2 07 10 PM](https://github.com/user-attachments/assets/aaf9e874-2f4f-41b9-82b4-31221728f75b)
 
-Lock the patch and change the top-left value to 20. You should see the output of the * object (as seen in the lower number box) change to 200. From this, we can see that numbers coming into the left inlet of the * object cause output to occur. Now change the value of the top-right object to 50. You will notice that nothing changes. What happened?
+Lock the patch and change the top-left value to 20. You should see the output of the `*` object (as seen in the lower number box) change to 200. From this, we can see that numbers coming into the left inlet of the `*` object cause output to occur. Now change the value of the top-right object to 50. You will notice that nothing changes. What happened?
 
 The right inlet of a math object is called a "cold inlet". This means that it will accept information, but it won't generate output. When is really happening is that the object is taking in the number you send it, storing it as the new operand, and is waiting for input to come into the left inlet so it can now multiply it by 50. Change the top-left number box to 10, and you will now see that the result (500) is using the new operand value for the multiplication.
 
@@ -71,15 +71,15 @@ Most people, at this point, wonder why the number inside the math object doesn't
 
 2. Modify the patch in exercise 1 to accept a second input that will change the operand in all of the calculations simultaneously. Hint: Dividing by zero is a bad idea in math, so you may want to limit the operand value to a positive number.
 
-# Friend Object: Slider
-Sometimes, you just want a simple user interface element for setting or displaying a value without showing an actual number. In this case, the slider object is the answer. You will find the slider object in the object palette (which you get with a double-click on a blank part of the patcher window), near the bottom left of the object set.
+# Friend Object: `Slider`
+Sometimes, you just want a simple user interface element for setting or displaying a value without showing an actual number. In this case, the slider object is the answer. You will find the `slider` object in the object palette (which you get with a double-click on a blank part of the patcher window), near the bottom left of the object set.
 
 ![Screenshot 2025-01-09 at 2 12 33 PM](https://github.com/user-attachments/assets/89e12317-47a6-4fe7-8153-b248715badae)
 
-When you create a slider, it is fairly simple: it has a border and a little bar. This bar is the control; if you lock your patch and click-drag on this bar, you will see that it slides up and down via mouse control. Unlock your patch and connect the outlet of the slider to a new number box. Now lock the patch and change the slider value - you will see that it outputs a number based on the bar's position. By default, the slider object will produce (or show) numbers in the range from 0 to 127 (a parallel with the MIDI range of note values). You can change this to any range by selecting the object and changing the range value. Putting in a value of 500 will change the range to go from 0 to 499 (500 individual steps). You can also enter minimum values (which will change the starting point of your range) and a multiplier (which will perform an automatic multiplication of the output of your slider).
+When you create a `slider`, it is fairly simple: it has a border and a little bar. This bar is the control; if you lock your patch and click-drag on this bar, you will see that it slides up and down via mouse control. Unlock your patch and connect the outlet of the `slider` to a new number box. Now lock the patch and change the `slider` value - you will see that it outputs a number based on the bar's position. By default, the `slider` object will produce (or show) numbers in the range from 0 to 127 (a parallel with the MIDI range of note values). You can change this to any range by selecting the object and changing the range value. Putting in a value of 500 will change the range to go from 0 to 499 (500 individual steps). You can also enter minimum values (which will change the starting point of your range) and a multiplier (which will perform an automatic multiplication of the output of your slider).
 
 # Exercise
-Create a new patch with a slider connected to a multiply object with an operand of 10. Connect the output of the multiply object to a number box. Lock the patch and move the slider. Is there any way that this is different from using a number box as input?
+Create a new patch with a `slider` connected to a `*` object with an operand of 10. Connect the output of the `*` object to a number box. Lock the patch and move the slider. Is there any way that this is different from using a number box as input?
 
 # Related Objects
 All of the numbers we've worked with so far have been integer (whole) numbers. While these are useful, much of the interesting information is found between integers, in the world of floating point (fractional) numbers. Within Max, there is a separate stream of objects and procedures you use to work with floating point numbers.
@@ -107,27 +107,27 @@ Finally, to get the slider to produce or show floating point numbers, we need to
 # Exercise
 One of the classic Max exercises is to convert a Fahrenheit temperature into its Celsius equivalent. This is done by taking an input value, subtracting 32.0, multiplying by 5.0 then dividing the result by 9.0. Using a slider on the input and a flonum to show the results, try to create an F-to-C conversion patch.
 
-# More on Trigger
-In the last lesson, we saw that the trigger object could produce output in a specified firing order. Trigger also has three more properties: it can pass data through (in the defined order), convert data to a specific type, and generate predefined data entered in as an argument.
+# More on `Trigger`
+In the last lesson, we saw that the `trigger` object could produce output in a specified firing order. `Trigger` also has three more properties: it can pass data through (in the defined order), convert data to a specific type, and generate predefined data entered in as an argument.
 
 Create the following patch:
 
 ![Screenshot 2025-01-09 at 2 30 27 PM](https://github.com/user-attachments/assets/8d872eae-a132-4ce7-bca0-33e56e09fa46)
 
-We have two different trigger objects: one with an integer number box for input, the other with a floating point input. In each case, the value is fed to a trigger ("t") object with the arguments "b i f". These arguments stand for "bang", "integer" and "float", and determine the output of the related outlet. If you enter a number into either of the number boxes, you will see that the results sent to the Max Window are of the appropriate type. If a number has to be converted, the object will do so automatically.
+We have two different trigger objects: one with an integer number box for input, the other with a floating point input. In each case, the value is fed to a `trigger` ("t") object with the arguments "b i f". These arguments stand for "bang", "integer" and "float", and determine the output of the related outlet. If you enter a number into either of the number boxes, you will see that the results sent to the Max Window are of the appropriate type. If a number has to be converted, the object will do so automatically.
 
-We can also force a specific value out of one of trigger's outlets. Build this patch:
+We can also force a specific value out of one of `trigger`'s outlets. Build this patch:
 
 ![Screenshot 2025-01-09 at 2 35 45 PM](https://github.com/user-attachments/assets/f060b26f-3b04-4d3e-9496-0693883eb902)
 
-Now, a trigger object with the arguments "i f 20" will output an integer and a floating point number, but the first value that is produced will always be the integer number "20", since this is a static value provided as an argument. Also, notice that if you click on the button to send a bang into the trigger object, the default values of 0.000000 and 0 (plus the default "20") will be sent out the trigger object's outlets, since the bang message has no intrinsic numeric value.
+Now, a `trigger` object with the arguments "i f 20" will output an integer and a floating point number, but the first value that is produced will always be the integer number "20", since this is a static value provided as an argument. Also, notice that if you click on the `button` to send a bang into the `trigger` object, the default values of 0.000000 and 0 (plus the default "20") will be sent out the `trigger` object's outlets, since the bang message has no intrinsic numeric value.
 
 # Theory
-Earlier, we saw that the math objects only create output when numbers come into their left inlet. Numbers coming into the right inlet are stored, but don't generate any output. There is a name for this difference: the right inlet is called a "cold" inlet, and the left inlet is called a "hot" inlet. Remember: Hot inlets generate output, cold inlets do not.
+Earlier, we saw that the math objects only create output when numbers come into their left inlet. Numbers coming into the right inlet are stored, but don't generate any output. There is a name for this difference: the right inlet is called a "cold" inlet, and the left inlet is called a "hot" inlet. **Remember: Hot inlets generate output, cold inlets do not.**
 
 You can determine if an inlet is hot by hovering your mouse over the inlet; cold inlets will have a blue circle around them, while a red circle indicates a hot inlet. This works for every object, not just math objects. Whenever you are using a new object, you can always figure out the generation of output by checking the hot or cold status of the inlets.
 
-What do you do if you want to generate output when all you are changing is cold inlet data? This is a great place to use the trigger option with our new argument options. By using a "t b i" trigger, we can send the value to the right (cold) inlet of the + object, then send a bang message to the hot inlet - forcing a recalculation of the addition and output of the new value.
+What do you do if you want to generate output when all you are changing is cold inlet data? This is a great place to use the `trigger` option with our new argument options. By using a "t b i" `trigger`, we can send the value to the right (cold) inlet of the + object, then send a bang message to the hot inlet - forcing a recalculation of the addition and output of the new value.
 
 So how do we patch this? Here's an example:
 
