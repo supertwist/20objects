@@ -1,6 +1,6 @@
  Many of the things we need to do involve numbers, but even more will use text within Max: words used as commands, words used to set parameters and words used for user display purposes. Having an object that can use text as well as numbers is important working with Max, and is accomplished using the `message` box.
 
-# The message box object
+# The `message` box object
 
 The `message` box is another user interface object, but it is also the most versatile object in the Max palette. This single object can perform all of the following functions:
 - Generate messages when clicked (similar to a pushbutton).
