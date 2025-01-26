@@ -4,7 +4,7 @@ As our Max patches become more feature-filled, it becomes more important to find
 
 At its most basic level, the pattr object acts as an "alias" for another object. By attaching a pattr object to any other value-storing object, you can set or retrieve that object's contents remotely. We can do that by attaching a pattr object's middle outlet to a UI object.
 
-__img__
+![01](https://github.com/user-attachments/assets/5cd473f0-3319-4b21-8acf-0fb9ed63cc89)
 
 In this patch, we have a slider connected to a pattr object named "slingblade". We also have a pattr object named "mypattr" that is has an addition parameter attaching it to our slingblade object. When we change the slider, we can see the mypattr object output that value; likewise, if we change the numberbox connected to mypattr's inlet, it will change the slider.
 
@@ -15,21 +15,21 @@ While all of this setup is interesting, having an object under remote control ma
 # Friend object: pattrstorage
 Well, there is such an object: pattrstorage. All we have to do to start using the pattrstorage object is to drop one into our patch and give it a name. Do that, naming the object "dada":
 
-__img__
+![02](https://github.com/user-attachments/assets/07dc8a80-1dd9-4e9f-951e-50394455ade3)
 
 If you lock the patch and double-click on the object, a window will come up showing us the names, values and other information about all of the pattr objects currently in the patch. This shows how the object is able to track down - or set values on - the objects connected to pattr objects. Within the window, you can double click on any value and change it, then see the results in your patch.
 
 One of the cool things that pattrstorage can do is to create presets for our patch. You store a preset by sending pattrstorage a "store" message, and retrieve a preset by sending it a number that represents an existing preset. Let's create a simple 3-slot preset mechanism for our patch by adding the following:
 
-__img__
+![03](https://github.com/user-attachments/assets/294343c7-87a3-4249-a2ee-0da140471804)
 
 If we make some changes and store the results in one of the slots, we can get back our values at any time - just by sending an integer message to pattrstorage. You can also use a floating-point number, but that has an interesting result: any floating point number will create an interpolated value between adjacent presets. So, for example, the value 1.5 will give us values halfway between preset 1 and preset 2.
 
-__img__
+![04](https://github.com/user-attachments/assets/66f3e293-14c5-454e-b626-19b7d5175378)
 
 Now, of course, making presets doesn't help us much if we can't restore them when we reopen the patch. The pattrstorage object has a number of ways to try to "autosave" the preset contents, but it is wise to control this function yourself whenever possible. You can save the pattrstorage contents to a file by calling the "write" message, and read it from disk using the "read" message. If you like, you can append a filename that will be used for the read and write messages. Here is how we would cause the pattrstorage object to implement a read and write command for our work:
 
-__img__
+![05](https://github.com/user-attachments/assets/0e741b24-c598-4af9-a338-645892083700)
 
 # Exercise
 Create a patch that has 5 sliders, and create a preset mechanism that will store 5 presets. Have it save and restore presets to a file named "MyFive" on your disk, and show the presets saving and restoring.
@@ -41,13 +41,13 @@ Not really. If you are willing to give up a little control, a new object called 
 
 Let's take a closer look at this. Create the following patch:
 
-__img__
+![06](https://github.com/user-attachments/assets/04f848b5-f210-4d4c-8383-a820de7f7b09)
 
 We've got 6 interface object, none of them connected to the pattrstorage object. If you double-click pattrstorage, you will see that it has no connections to anything - it's an empty slate at this point. Now, add a new "autopattr" object to the patch and double-click on the pattrstorage. There is no change. Why? Because autopattr, by default, will only connect to items that have a "scripting name".
 
 If we change the autopattr to include a new parameter set - "@autoname 1" - we will now see that all of the sliders have been given names and are exposed to the pattrstorage object. The names aren't overly descriptive (normally, they are the type of object with an array identifier after the type), but you should be able to see that the UI elements are well covered.
 
-__img__
+![07](https://github.com/user-attachments/assets/4b470f70-83df-497c-9d43-094a0b5b60e9)
 
 Sometimes, you will want to exclude certain items from autopattr's view. You can do this by connecting the second outlet of autopattr to the inlet of the object to be excluded. Do that to one of the sliders, then check that it is gone from the pattrstorage listing.
 
@@ -57,8 +57,9 @@ Sometimes you will want to transmit the value of an object from one place to ano
 
 Create the following patch:
 
-__img__
+![08](https://github.com/user-attachments/assets/eedd9078-ff79-4f45-80a4-f15a77633a8b)
 
 Now, whenever you move the slider, its value is transmitted to both the number box and the Max window. When you are looking at someone else's patch, you may find situations where there seems to be no connection between logic blocks. You will want to search the patch for send and receive combinations (generally abbreviated as "s" and "r") to track the connection.
 
-__img__
+![09](https://github.com/user-attachments/assets/a0b7cc0e-12cd-4a4d-8dc4-905720a2773f)
+
