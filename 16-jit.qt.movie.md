@@ -8,39 +8,39 @@ Movie files will have a number of pre-defined internal settings. They have a siz
 # The `jit.qt.movie` object
 With that slight introduction, let's take a look at our first object: the `jit.qt.movie` object. As its name implies, it is a Jitter object (jit.), works with QuickTime (qt.) and plays a movie. In order to make it work, we need to surround it with a few extra Max objects. Create this patch:
 
-__img__
+**img-01**
 
 One of the things you should notice is that a `jit.qt.movie` object depends on getting `bang` message. The `metro` object produces those bangs, which tells the `jit.qt.movie` object to send out the movie frame. Since we are assuming that any movie file will produce no more than 30 frames/second, we use 33 as a convenient `metro` time. You should also notice that our `jit.qt.movie` object has a pair of numbers as arguments. These numbers represent the output size of the movie that will be produced. If the source material is not the same size, it will be converted into the size shown by the arguments. These arguments represent the width and height of the visuals that will be produced.
 
 When you click on the `read` messagebox, you will get a dialog for selecting a movie file. You can find a number of movie files in the "patches" folder that comes with Max: the media folder contains a number of different types of media that Jitter can work with. Select the movie file called "blading.mov" to be loaded.
 
-__img__
+**img-02**
 
 Regardless of the settings of the rest of the patch, you will immediately begin to hear the output of the movie. That is because the movie automatically starts whenever it is loaded. If the `metro` is turned on, you will find that the movie continuously loops, since looping is on by default. Finally, and most importantly, you will notice that we can't see anything; that's because we don't have the output of the `jit.qt.movie` object connected to any display window. Let's do that now.
 
 # The `jit.pwindow` object
 There are two display windows that we can use - in this case, we will use the `jit.pwindow` object. This is the icon with the small cat with eyeglasses; it creates a window in our patch that will display the output of the movie object.
 
-__img__
+**img-03**
 
 The window starts off with a default (and rather small) size; you can resize it to make a more visible viewer. As with other objects, you can do this by grabbing the handle at the lower-right and dragging it to the appropriate size. You don't have to worry about matching the size of the `jit.qt.movie` object; the movie will resize to fit properly in the screen. What you will want to pay attention to is the aspect ratio of the pwindow - otherwise, the movie output will appear warped.
 
 Once you've resized the `jit.pwindow`, you can hook up a patchcord between the `jit.qt.movie` object and the `pwindow`. If the `metro` object is running, you will immediately see the output of the movie that is currently playing.
 
-__img__
+**img-04**
 
 There are a few things we should understand about this patch. First, the patchcord that connects the `jit.qt.movie` and the `jit.pwindow` is a curiously fuzzy/green version - similar to an MSP patchord, but a different color. This gives us a visual clue that this patchcord is carrying a different "load" than a normal patchcord.
 
 If we connect up a green Jitter patchcord to a print object, we will see that the Max window doesn't try to display an image (it couldn't even if we wanted it to). Instead, it displays a very curious string of characters:
 
-__img__
+**img-05**
 
 These characters represent a "pointer" to a block of data that is a video frame. Rather than sending the whole graphical frame from one object to the next, Max/Jitter creates a storage spot for the frame, then just passes the name of the frame from one object to the next. This is an efficient way for the system to move data around without overwhelming the computer with data transfer overhead.
 
 # Movie Control
 Now that we have a movie playing, the next step is to control its playback. We are going to change our initial patch a little to support better video playback. Can you see a difference in this patch?
 
-__img__
+**img-06**
 
 Hopefully you saw that the `metro` object was changed to a `qmetro`...
 
@@ -49,7 +49,7 @@ The `qmetro` object is a "Jitter-aware" version of `metro`; if Jitter becomes to
 
 Next, let's add a control for playback speed. The easiest way to control playback speed is to create a `rate n.nn`, where n.nn is any positive or negative floating point value. How do these values relate to playback speed?
 
-__img__
+**img-07**
 
 Much like with audio and the `groove~` object, standard playback is a rate of 1.00. Any value greater than 1.00 will speed up the playback, so a rate of 2.00 would play the movie back at double-speed. Values less than one slow down playback, so a rate of 0.50 would play it back at half speed. What about negative numbers?
 
@@ -62,11 +62,11 @@ Some interesting things we can do to alter the playback of the movie requires so
 
 To get the length, we have to interrogate the `jit.qt.movie` object about the movie it has read in. We can do that by sending it a `get???` message, where you replace the "???" with the attribute you want to receive. So, for example, sending `getduration` will return the duration of the movie. Do this with the following patch to see what happens:
 
-__img__
+**img-08**
 
 Note that we get a value, but it is a rather weird number. In my example, the result was the value 7240, which doesn't look right for any timebase that we've used to this date. The reason? Because it isn't in milliseconds, samples or days; rather, it is in "QuickTime Units". In order to figure out how many QuickTime Units represent a second (and this is specific to the movie), we need to query `jit.qt.movie` again - this time with a `gettimescale` message. If we use the route object to separate the messages, we get a patch like this:
 
-__img__
+**img-09**
 
 The timescale is the number of QuickTime Units per second, so we can find out the duration of the movie (in seconds) by dividing the duration by the timebase, giving us a value of 12.067. We will want to work in milliseconds (a timescale we are familiar with), so we will also need to multiply the value by 1000. We can then use the result to adjust some scale objects that will alter the results of an `rslider` - giving us (finally!) the loop points we need in milliseconds increments.
 
@@ -74,10 +74,10 @@ Why would we bother converting this to milliseconds? The reason is that this is 
 
 So, to set the looppoints, we will have to use the timebase as well, so we can multiply by that same value. We also have to divide by 1000, since the timebase is in units per seconds. Whoosh!
 
-__img__
+**img-10**
 
 In reality, there aren't that many movie attributes that we will need to know - and I've created two abstractions for you to use. They are available in the downloads section, and in future lessons, we will be using the `myqtinfo` and `myms2qtu` abstractions extensively.
 
-__img__
+**img-11**
 
 This gives us the information that we most desperately need, and allows us to create patches that are movie-aware without a lot of abstract message handling. It also sets us up perfectly for the next lesson, which delves into the world of the matrix - the data structure used to move movie information between Jitter objects.
