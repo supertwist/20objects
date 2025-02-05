@@ -65,7 +65,7 @@ If we create a patch with the `wave~` object, we can use a `phaser~` object to d
 
 By manipulating the output of the `phaser~`, we can also change the playback of the sample. The easiest way to manipulate the `phaser~` output is through the audio-rate math functions. You can find these in the help system, but suffice to say that for every Max math option, there is an MSP equivalent - it just needs a tilde at the end. Let's put together a patch that lets us manipulate the `phaser~` output, display this driver and listen to the sound of the patch:
 
-![09](https://github.com/user-attachments/assets/5352d64c-4df8-4bc9-a2a0-de1b6969a4c4)=
+![09](https://github.com/user-attachments/assets/5352d64c-4df8-4bc9-a2a0-de1b6969a4c4)
 
 # Conclusion
 So we've seen a number of ways to work with samples, and ways to manipulate the sample playback using signals and `phaser~` objects. There are a million different ways to create interesting audio using sample playback tools - try to dig through the documentation, tutorials and other materials to see if there might be something that inspires you.
