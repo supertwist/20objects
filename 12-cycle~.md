@@ -5,7 +5,7 @@ The `cycle~` object is the first object that we will use from the MSP portion of
 
 You instantiate a `cycle~` object just like any other Max object: you create a new object box and type `cycle~` into it. Max will see this object name and understand that it is an audio object rather than a standard Max object. The `cycle~` object uses an options argument that we are going to start with; this argument determines the default frequency of the audio output. We'll use 440.0 as a default frequency:
 
-**img-01**
+![01](https://github.com/user-attachments/assets/c5791441-7a8d-4f1e-8497-d43f650cbd80)
 
 You want to make sure to use the tilde at the end of the object name; `cycle` and `cycle~` are two different objects, and dropping the tilde will not give you what you expected.
 
@@ -14,7 +14,7 @@ An audio object with no connection to your computer's audio interface is truly a
 # Friend Object: `ezdac~`
 The `ezdac~` object is a user-interface object, so you will find it on the palette. It is the item that looks like a small speaker. Place an `ezdac~` on your patch.
 
-**img-02**
+![02](https://github.com/user-attachments/assets/67c107af-90cb-49c8-9bb6-4a8ae13b5380)
 
 The `ezdac~` object serves two purposes: it allows you to connect audio objects to your computer's audio interface, and it allows you to turn MSP processing on and off. Lock the patch and click on the `ezdac~` object. You will see that it clicks on and off (and you may hear your computer's interface click as well).
 
@@ -23,7 +23,7 @@ Now, in order to make the `cycle~` object play through our computer, we need to 
 > [!CAUTION]
 > TURN DOWN YOUR COMPUTER AUDIO LEVEL BEFORE MAKING THIS PATCH! IF YOU ARE USING HEADPHONES, TAKE THEM OFF!
 
-**img-03**
+![03](https://github.com/user-attachments/assets/e69697ec-7962-4a9f-acc3-dd8e77b4da33)
 
 If you lock the patch and turn on the audio input, you should be able to hear the result of the `cycle~` object as a sinewave tone at A/440. One thing you will notice is that the cables connecting the `cycle~` to the `ezdac~` are different from normal cables - they are yellow and fuzzy. This is a visual indicator to you that the information flowing down this cable is an audio stream and not your normal Max messages. You cannot connect the audio outputs of an object to a standard Max object; the audio information is not understood by Max object at all.
 
@@ -32,39 +32,39 @@ At this point, we've created the simplest audio patch possible: an audio generat
 # The `gain~` object
 The easiest object to use for volume control is the `gain~` object - another user-interface element. This object is on the palette, and it looks like a slider with some diagonal stripes on it. Put one of these on your patch, then connect the output of the `cycle~` to the input of the `gain~`, and the output of the `gain~` to the input of the `ezdac~`:
 
-**img-04**
+![04](https://github.com/user-attachments/assets/80c03221-1aa5-4c36-bb52-415f5e44bf4f)
 
 Now, if you lock the patch and turn on the `ezdac~`, you shouldn't hear much because the `gain~` is turned completely off. Slowly increase the gain~ slider and you will hear the volume increase. This is the essence of audio level control all stashed in a single object.
 
 Next, we need to be able to change the pitch of the `cycle~` object. The input of a `cycle~` object accepts either an audio signal (for constantly changing values) or a floating point number (for a static value). We will use a flonum number box to set the pitch:
 
-**img-05**
+![05](https://github.com/user-attachments/assets/c71dac69-1735-4f0a-8f87-5db6eb0a436f)
 
 Lock the patch, turn up the volume and adjust the number box - you should hear the pitch changing. If you don't, double-check all of your patchcord connections.
 
 One of the things you will notice is that all of the sounds are mono: the left and right sides of the audio are the same. We are going to make a patch that has separate pitches in each of the stereo channels. To do this, we will just duplicate everything except the `ezdac~` and place it next to the originals (using copy/paste, or by selecting everything and option-dragging a copy). Then we change the connection for the first `gain~` to connect to the left side of the patch and connect the new `gain~` to the right side.
 
-**img-06**
+![06](https://github.com/user-attachments/assets/63efcec4-4647-47ea-849c-b464abffa073)
 
 Now, when you bring up the volumes, you will hear two tones - one in each side of the stereo field. If you change one of the pitch values or change the volume, you can hear it change on one side or the other.
 
 What if we want both tones in each of the stereo channels? To do this, we have to mix the signals. Interestingly, there is no object that does mixing - instead, you just connect more than one audio patch cord to an inlet. Max/MSP knows enough to combine the two signals before they are used.
 
-**img-07**
+![07](https://github.com/user-attachments/assets/2e1e067b-0752-4eff-996e-ea49d56c25e9)
 
 This mixing process combines the two signals without changing the volumes. If you want to do a typical mixing job of both volume control and signal combination, you will need to do the volume control yourself. This is easy to do by placing the `gain~` control before the signal combine in your patch:
 
-**img-08**
+![08](https://github.com/user-attachments/assets/5a1bf7e8-ed1e-4a9c-8bbb-dca440f5dc3d)
 
 You can control the `gain~` setting with a normal number box. The range for a `gain~` slider, by default, is from 0 to 157, where 127 represents full volume and values higher than that represent amplification. You can change this using the object inspector, but we will just go with that default, limiting our levels to the 0-127 range. Add a number box to the patch and connect the outlets to the inputs of the two gain~ objects. Now, with one control, you can set up the volumes of both `gain~` controls.
 
-**img-09**
+![09](https://github.com/user-attachments/assets/9ce1a6dd-aa6b-4951-962d-52adb466d874)
 
 What if we want to use the number box to control panning instead? We can just change our logic; rather than using the number box to control the volumes, we'll change it to move the slider in contrary directions. To do this, we will have to use one of the lesser known (but very important) math objects: `!-` (the reverse minus.)
 
 The reverse minus, or rminus, reverses the order of a subtraction. Rather than subtracting the object argument from the input, we subtract the input from the argument. Let's see this at work:
 
-**img-10**
+![10](https://github.com/user-attachments/assets/e877635b-2224-491a-a62f-497c117bc89f)
 
 Now, you can see that our number box controls one `gain~` object's value, while the other is moved in the opposite direction based on the output of the `!-` object. This is a simple way of working with converse movement, but it is a function that you will use often when working with mixing controls.
 
@@ -76,7 +76,7 @@ One thing that you will notice is that, since your exercise patch used random se
 # Friend object: `mtof`
 The object that does this is the `mtof` object. It takes an integer value from 0-127 (the MIDI note range) and translates it into a frequency that can be used to properly drive a `cycle~`. Here's a simple example of mtof in use.
 
-**img-11**
+![11](https://github.com/user-attachments/assets/148e3ced-cfe5-4b71-9025-ba20df162112)
 
 # Exercise
 Change your previous exercise patch to only produce standard MIDI note output. All of the rest of the patch can stay the same.
@@ -88,7 +88,7 @@ Max comes with an abstraction, found in the examples folder, that can solve this
 
 The -1.0-1.0 option is convenient if we are calculating a range from some other value range, while 0-127 is a convenient range if we are working with MIDI controllers or something like the default output of a slider. I prefer to use the 0-127 range; this way, if I later decide to hook up the control to a MIDI controller, I don't have to make any changes to the input range:
 
-**img-12**
+![12](https://github.com/user-attachments/assets/53852f14-b65e-4de7-a545-d896a46edda5)
 
 # Conclusion
 At this point, you have the tools to create a sound without using any external hardware or software - everything is built within Max. This gives you massive control of the sound creation function, and is why many performance artists use MSP objects for sound creation.
