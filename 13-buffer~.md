@@ -3,13 +3,13 @@ Working with synthesized waveforms is fun, but a lot of music is created using a
 # The `buffer~` object
 The `buffer~` object is an object that loads, and provides access to, audio files. We create a `buffer~` object in a normal object box, but there are a few required arguments:
 
-**img-01**
+![01](https://github.com/user-attachments/assets/48435652-e97e-45d9-9ed5-dd190255dfc2)
 
 The first argument is a name for the `buffer~` - the moniker that other objects will use to access this data. In this case, the `buffer~` is named "dogboy", but that name is totally arbitrary. The second argument, although optional, is a good idea to add. It is the number of audio channels that you expect to use with this buffer. In this case, we have set the `buffer~` up for 2 channels; they are now available, even if our audio file only contains one channel.
 
 You could place a file name in the `buffer~` object (right after the buffer name), but that is not as flexible as loading the buffer with a message. Assuming that you have a file named "demo01.aif", the following patch will load the file:
 
-**img-02**
+![02](https://github.com/user-attachments/assets/5bccf41b-6b67-490b-b748-a16a4dcdf5b2)
 
 There are several messages that will load files into a `buffer~` object, but the `replace` message is the most flexible - it will resize the memory of the `buffer~` object to fit the audio file you are loading (unlike the read message). If you have to load a compressed file (like an MP3 file), you will want to use the `import` message instead. If you want to verify that the data is loaded, you can double-click on the `buffer~` (when the patch is locked), and a window will pop up with a waveform display that shows the contents of the `buffer~`.
 
@@ -18,7 +18,7 @@ Now, the `buffer~` object is great for loading files, but it has no capability t
 # Friend Object: `groove~`
 The `groove~` object is a favorite for sample playback, because you can control many facets of the playback with a few different messages. Put together this patch, which will help use get started with playback:
 
-**img-03**
+![03](https://github.com/user-attachments/assets/f3ab9d12-2987-435b-a33d-76681bf8e41c)
 
 # Friend Object: `sig~`
 There is a new friend object here: the `sig~` object. What the `sig~` object does is turn a static number (like we get from our flonum object) and turns it into an audio signal. You can think of audio signals as "streams" of data, which spit out a constant flow of data; this is unlike Max messages, which send individual events.
@@ -30,23 +30,24 @@ You will notice that we can simulate a lot of interesting sounds by adjusting th
 # Friend Object: `info~`
 In order to take advantage of some of `groove~`'s more advanced features, we will need to get some information about the data in the `buffer~`. One of the conveniences of the buffer object is that the right outlet produces a bang message as soon as a file is loaded. When we get this bang, we can force a new object - the `info~` object - to tell us some things about the current contents.
 
-**img-04**
+![04](https://github.com/user-attachments/assets/4ccc5bd7-665a-44ae-8a59-765234a30672)
 
 It's great to see this information, but what do we do with it? The most obvious is to use the length of the file to determine the loop points, and know for sure that our settings are reasonable for the currently loaded file. One of the interesting things about `groove~` is that it takes it's loop point setting in milliseconds, rather than in samples. Why?
 
 Because by doing this, it avoids us having to worry about sample rate and other over-technical things when dealing with setting loop points.
 
-**img-05**
+![05](https://github.com/user-attachments/assets/1a5b2a98-130b-4cac-8fee-66df674f37d9)
+
 In this patch, the `info~` object gives us millisecond outputs for the file, which we use to scale our loop values to fit the sample.
 
 # Related object: `scope~`
 Sometimes, it is useful for us to view the waveform that our audio project is producing. We can't print audio to the Max window, because it is a constant stream of data that would quickly overwhelm our screen. Instead, we can use the `scope~` object, which simulates an oscilloscope, to do our viewing.
 
-**img-06**
+![06](https://github.com/user-attachments/assets/15754a43-4571-46c9-b87b-8f74268ab865)
 
 Sometimes, if you are working on pretty fast audio-rate streams, you will need to change some of the default options for `scope~`. When I work with the `scope~` object, I will often change the buffer size to 8 or 16 and the calccount to 8 or 16:
 
-**img-07**
+![07](https://github.com/user-attachments/assets/202b94eb-3fa1-437b-8955-9d8943f7edf7)
 
 This gives good results when working with audio signals in a typical audible range.
 
@@ -55,7 +56,7 @@ We are going to take a short diversion from sample playback for a second to look
 
 Create the following patch and turn on the `ezdac~`:
 
-**img-08**
+![08](https://github.com/user-attachments/assets/cc0c4465-7968-4070-b082-dfe1303eda9b)
 
 You can see on the `scope~` that this creates an upward ramp that goes from 0.0 to 1.0. For use with sample playback, we could use a `phaser~` to move from the beginning of the sample to the end. To do this, we'll need another related object:
 
@@ -64,7 +65,7 @@ If we create a patch with the `wave~` object, we can use a `phaser~` object to d
 
 By manipulating the output of the `phaser~`, we can also change the playback of the sample. The easiest way to manipulate the `phaser~` output is through the audio-rate math functions. You can find these in the help system, but suffice to say that for every Max math option, there is an MSP equivalent - it just needs a tilde at the end. Let's put together a patch that lets us manipulate the `phaser~` output, display this driver and listen to the sound of the patch:
 
-**img-09**
+![09](https://github.com/user-attachments/assets/5352d64c-4df8-4bc9-a2a0-de1b6969a4c4)=
 
 # Conclusion
 So we've seen a number of ways to work with samples, and ways to manipulate the sample playback using signals and `phaser~` objects. There are a million different ways to create interesting audio using sample playback tools - try to dig through the documentation, tutorials and other materials to see if there might be something that inspires you.
