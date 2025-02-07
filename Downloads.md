@@ -38,9 +38,19 @@
 [myqtinfo](https://github.com/supertwist/20objects/blob/main/FILES/lesson16_abstractions/myqtinfo.maxpat)
 
 ## Class Examples
-- Polyphony Patches for lesson 15
-- Jitter Video Patches for lessons 16–19
-- Jitter OpenGL Patches for lesson 20
+- Polyphony Patches for lesson 15\
+[1510](https://github.com/supertwist/20objects/blob/main/FILES/polyphony_files/1510.maxpat)\
+[1510_voice](https://github.com/supertwist/20objects/blob/main/FILES/polyphony_files/1510_voice.maxpat)\
+[1511](https://github.com/supertwist/20objects/blob/main/FILES/polyphony_files/1511.maxpat)
+- Jitter Video Patches for lessons 16–19\
+[quicktime-headache](https://github.com/supertwist/20objects/blob/main/FILES/JitterMovieFun/quicktime-headache.maxpat)\
+[rota-thing](https://github.com/supertwist/20objects/blob/main/FILES/JitterMovieFun/rota-thing.maxpat)
+- Jitter OpenGL Patches for lesson 20\
+[2001a](https://github.com/supertwist/20objects/blob/main/FILES/JitterOpenGLFun/2001a.maxpat)\
+[2001b](https://github.com/supertwist/20objects/blob/main/FILES/JitterOpenGLFun/2001b.maxpat)\
+[2002](https://github.com/supertwist/20objects/blob/main/FILES/JitterOpenGLFun/2002.maxpat)\
+[2003](https://github.com/supertwist/20objects/blob/main/FILES/JitterOpenGLFun/2003.maxpat)\
+[2004](https://github.com/supertwist/20objects/blob/main/FILES/JitterOpenGLFun/2004.maxpat)
 
 ## Other Downloads
 *(Note: You may need to ‘Save Link As’ with these links…)*
