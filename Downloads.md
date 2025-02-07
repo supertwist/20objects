@@ -1,8 +1,8 @@
 # Downloads
 
 ## Course Downloads
-- Fun Patches for lessons 1–3
--- [1-3a](https://github.com/supertwist/20objects/blob/main/FILES/1-3/1-3a.maxpat)
+- Fun Patches for lessons 1–3\
+[1-3a](https://github.com/supertwist/20objects/blob/main/FILES/1-3/1-3a.maxpat)
 - Fun Patches for lessons 4–6
 - Fun Patches for lessons 7–9
 - Fun Patches for lessons 10–12
