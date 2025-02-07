@@ -17,7 +17,8 @@ You should then see an untitled patch with all the good stuff created for you:
 
 You can also download the raw file, then open it in MAX:
 
-![04](https://github.com/user-attachments/assets/54639284-0fc6-4a38-9073-2ff98ca0c19a)
+![04](https://github.com/user-attachments/assets/604c4bb7-6620-4c24-b31d-231c22fd45a2)
+
 
 ## Course Downloads
 - Fun Patches for lessons 1–3\
