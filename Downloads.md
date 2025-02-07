@@ -1,5 +1,24 @@
 # Downloads
 
+## Note to students:
+Using the patches listed below may not be obvious. When you click on a link below it will take you to a Github page that shows the raw code of the patch, rather than the graphical represention you see in MAX.  There are two ways to get the patches into MAX.
+
+You can select-all the code and copy...
+
+![01](https://github.com/user-attachments/assets/37f4de24-7d4a-4afe-854e-cf8e20ecbb88)
+
+Then in MAX, go to the File menu and select 'New From Clipboard'
+
+![02](https://github.com/user-attachments/assets/90c9c373-052a-42c9-965f-9a667361e3c3)
+
+You should then see an untitled patch with all the good stuff created for you:
+
+![03](https://github.com/user-attachments/assets/01da06db-6d22-4509-8871-a71ad1bbd216)
+
+You can also download the raw file, then open it in MAX:
+
+![04](https://github.com/user-attachments/assets/54639284-0fc6-4a38-9073-2ff98ca0c19a)
+
 ## Course Downloads
 - Fun Patches for lessons 1–3\
 [1-3a](https://github.com/supertwist/20objects/blob/main/FILES/1-3/1-3a.maxpat)\
