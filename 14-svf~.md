@@ -12,13 +12,13 @@ There are two objects that produce usable noise for our patching: `noise~` and `
 
 In order to hear both of the noises at the same time, we need to set up a stereo arrangement with each side of the noise working on one of the stereo channels. Build the following patch to hear them in action:
 
-**img-01**
+![01](https://github.com/user-attachments/assets/8620df52-b7e4-4489-a48a-0c2975ff6715)
 
 We have one set of controls working on both filters, and each side is feeding to its own channel of the `ezdac~`. We are also using the first output of the `svf~` object, which gives us a lowpass filter. Adjust the frequency setting to hear the changes in the noise that the filter provides.
 
 Now, change the patch slightly to use the second outlet of the `svf~` object, which provides us with a high-pass filter. Again, try adjusting the frequency to hear the result:
 
-**img-02**
+![02](https://github.com/user-attachments/assets/e9431d35-c687-4299-a248-0185b79ed72a)
 
 Notice how the lowpass reduces the high frequencies, while the highpass reduces the low frequency. This is the equivalent to your typical EQ control, and closely represents analog filters in action.
 
@@ -27,13 +27,13 @@ The above patches would be a lot more fun if we could use either switches or men
 # Friend object: `selector~`
 Create the following patch:
 
-**img-03**
+![03](https://github.com/user-attachments/assets/3b3f1aab-64b5-4bcf-baae-0b216de2313a)
 
 We are using the `selector~` object to switch between noise sources feeding into a single filter set. We are using a toggle to select the input, but we have to add a 1 to the output in order to properly select the input. Why? Because, when it receives a "0", `selector~` will select none of the available inputs. "1" selects the first, "2" selects the second - so adding one to our toggle gives us the 1 or 2 value that we need.
 
 Now, let's use a selector to switch between the four outlets of the svf~ filter.
 
-**img-04**
+![04](https://github.com/user-attachments/assets/35592a39-dd53-4edb-a117-96c150699e34)
 
 Instead of using a toggle (which only gives us two settings), we are going to use a `umenu` object to make the selection. You will need to enter the four filter types into the umenu object, which are "lowpass", "highpass", "bandpass" and "notch"; these are entered into the `umenu` inspector. The left output of the umenu gives us the index of the menu selection - we will again add a "1" to that output to give us a useful value.
 
@@ -41,7 +41,7 @@ We also have to instantiate the `selector~` with an argument of 4 so that it giv
 
 Finally, let's change the patch to be a little easier to manipulate. We will replace the flonum controls used for frequency control and resonance to use knobs instead. Rather than make knobs that have the whole available range, we are going to use knobs with the standard 0-127 range, then scale them to match our needs:
 
-**img-05**
+![05](https://github.com/user-attachments/assets/258f9e39-6196-4b4d-8d79-97b087cecc51)
 
 The resonance control uses a standard scale object to change the 0-127 range to a 0.00-1.00 range. The frequency, though, uses mtof. This is a case where the exponential control of the MIDI-to-frequency object works in our favor, and produces a much better result than using a standard scaling function.
 
@@ -52,7 +52,7 @@ The most versatile filter in the Max/MSP world is the `biquad~` filter. This is 
 
 Create the following patch. The `filtergraph~` object is available on the palette, typically at the beginning of the second row.
 
-**img-06**
+![06](https://github.com/user-attachments/assets/ef5ce0ee-89e6-47f2-8e46-bb50acc6a1cb)
 
 Instead of having to calculate a bunch of coefficients for `biquad~`, we can depend on the `filtergraph~` object to do it for us. This object gives us a graphic display of the filter curve, and allows us to manipulate the cutoff, resonance and gain in a single interface. The only selection that requires another object is selecting the filter type; you can grab the `umenu` object from the help file in order to accomplish this, or you can enter in the types of filters that you want to support. Note that we use the `textual` outlet of `umenu` to feed the filter type into `filtergraph~`: this means that we can put the filter types in any order we see fit.
 
@@ -60,7 +60,7 @@ Now, to use the filter, we select a type, and make our adjustments. When in the 
 
 Sometimes, you want to use a `biquad~` filter in a more traditional way: perhaps by setting it to a lowpass type, and manipulating it with a cutoff and resonance control (similar to the `svf~` filter), and not exposing the graph - or having the graphics simply display the results. Luckily, you can do this by using the rightmost three inlets of the `filtergraph~` object. These three inlets - `cutoff`, `gain` and `resonance`, respectively, give you a simplified interface to these settings. Create the following patch as an example:
 
-**img-07**
+![07](https://github.com/user-attachments/assets/a76baa6c-9518-4848-94a3-2c5e1e1e8a56)
 
 Now we have the ability to set the filter using simple knob controls, but we get a full display of the filter for reference. If you want to prevent users from adjusting the `filtergraph~` object directly, you can turn on the "Ignore Click" option in its Inspector, and it will be a display-only item.
 
@@ -69,7 +69,7 @@ What if you don't want to have a graphic at all? Or what if you want to alter th
 # Related object: `filtercoeff~`
 The `filtercoeff~` object is, basically, an emulation of the filtergraph~ object's rightmost three inlets, but they accept audio signals as well as floating point numbers. Create the following example patch:
 
-**img-08**
+![08](https://github.com/user-attachments/assets/e7ebb749-d1d8-46b0-a1db-7751c57be094)
 
 This patch uses a very slow `cycle~` object to alter the value of the frequency cutoff, and another very slow `cycle~` object to later the value of the resonance. You can set the filter type with an argument (eliminating the need for a filter mode/type `umenu`, although this is an option), and the outputs feed directly into a `biquad~` object. The result is a sweeping noise sound that is perfect for your favorite spacey music.
 
