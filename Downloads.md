@@ -54,7 +54,7 @@
 
 ## Other Downloads
 *(Note: You may need to ‘Save Link As’ with these links…)*
-- Tech Foundations example patch #1
-- Tech Foundations example patch #2
-- major scaling abstraction
-- clippings folder
+- [Tech Foundations example patch #1](https://github.com/supertwist/20objects/blob/main/FILES/Tech%20Foundations%201.maxpat)
+- [Tech Foundations example patch #2](https://github.com/supertwist/20objects/blob/main/FILES/Tech%20Foundations%202.maxpat)
+- *major scaling abstraction* (unable to find in Wayback Machine)
+- *clippings folder* (unable to find in Wayback Machine)
