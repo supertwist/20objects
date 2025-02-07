@@ -1,6 +1,6 @@
 # Downloads
 
-## Note to students:
+## *Note to students:*
 Using the patches listed below may not be obvious. When you click on a link below it will take you to a Github page that shows the raw code of the patch, rather than the graphical represention you see in MAX.  There are two ways to get the patches into MAX.
 
 You can select-all the code and copy...
