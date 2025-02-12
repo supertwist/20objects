@@ -1,5 +1,5 @@
 > [!NOTE]
-> In modern versions of Max, the `jit.**qt**.movie` object is deprecated, and has been replaced by 'jit.movie'. If you are replicating any of the examples below, you can remove the .qt part of jit.qt.movie.
+> In modern versions of Max, the `jit.qt.movie` object is deprecated, and has been replaced by `jit.movie`. If you are replicating any of the examples below, you can remove the .qt part of jit.qt.movie.
 
 # The fundamentals of Quicktime Movies
 Well, it's time to enter the brave world of visuals. In Max, this is primarily done using the objects that are part of the Jitter package. Most of these objects start with a prefix of `jit.`, so are easily identified when you are looking at help files and documentation.
