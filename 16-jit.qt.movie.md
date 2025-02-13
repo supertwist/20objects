@@ -19,6 +19,14 @@ When you click on the `read` messagebox, you will get a dialog for selecting a m
 
 **img-02**
 
+> [!NOTE]
+> In modern versions of Max on the Apple OS, the patches folder is hidden within the application package:
+> `user/Applications/Max.app/Contents/Resources/C74/media/jitter/bball.mov`
+> But, you can navigate to any handy quicktime file using the `open` dialog. And, even more easily, you can access the sample movies from the video browser icon in the left margin of the Max window:
+> **img-02b**
+> This adds a `jit.playlist` object to the patch which can be viewed when connected to a `jit.pwindow` object, which we'll look at in the next section.
+> **img-02c**
+
 Regardless of the settings of the rest of the patch, you will immediately begin to hear the output of the movie. That is because the movie automatically starts whenever it is loaded. If the `metro` is turned on, you will find that the movie continuously loops, since looping is on by default. Finally, and most importantly, you will notice that we can't see anything; that's because we don't have the output of the `jit.qt.movie` object connected to any display window. Let's do that now.
 
 # The `jit.pwindow` object
