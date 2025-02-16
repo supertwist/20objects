@@ -37,7 +37,7 @@ Regardless of the settings of the rest of the patch, you will immediately begin 
 # The `jit.pwindow` object
 There are two display windows that we can use - in this case, we will use the `jit.pwindow` object. This is the icon with the small cat with eyeglasses; it creates a window in our patch that will display the output of the movie object.
 
-**img-03**
+![03](https://github.com/user-attachments/assets/392352b4-abee-4c83-a37f-64fe81cec460)
 
 The window starts off with a default (and rather small) size; you can resize it to make a more visible viewer. As with other objects, you can do this by grabbing the handle at the lower-right and dragging it to the appropriate size. You don't have to worry about matching the size of the `jit.qt.movie` object; the movie will resize to fit properly in the screen. What you will want to pay attention to is the aspect ratio of the pwindow - otherwise, the movie output will appear warped.
 
