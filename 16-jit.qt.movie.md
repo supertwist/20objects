@@ -11,9 +11,9 @@ Movie files will have a number of pre-defined internal settings. They have a siz
 # The `jit.qt.movie` object
 With that slight introduction, let's take a look at our first object: the `jit.qt.movie` object. As its name implies, it is a Jitter object (jit.), works with QuickTime (qt.) and plays a movie. In order to make it work, we need to surround it with a few extra Max objects. Create this patch:
 
-![01](https://github.com/user-attachments/assets/ccd055f0-86aa-4edb-8484-e744cee98e23)
+![01](https://github.com/user-attachments/assets/4bba1498-4733-42b4-873b-abc5a33024fd)
 
-One of the things you should notice is that a `jit.qt.movie` object depends on getting `bang` message. The `metro` object produces those bangs, which tells the `jit.qt.movie` object to send out the movie frame. Since we are assuming that any movie file will produce no more than 30 frames/second, we use 33 as a convenient `metro` time. You should also notice that our `jit.qt.movie` object has a pair of numbers as arguments. These numbers represent the output size of the movie that will be produced. If the source material is not the same size, it will be converted into the size shown by the arguments. These arguments represent the width and height of the visuals that will be produced.
+One of the things you should notice is that a `jit.qt.movie` object depends on getting `bang` message. The `metro` object produces those bangs, which tells the `jit.qt.movie` object to send out the movie frame. Since we are assuming that any movie file will produce no more than 30 frames/second, we use 33 as a convenient `metro` time. You should also notice that our `jit.qt.movie` object has a pair of numbers, preceded by the attribute `@dim`, as arguments. These numbers represent the output size of the movie that will be produced. If the source material is not the same size, it will be converted into the size shown by the arguments. These arguments represent the width and height of the visuals that will be produced.
 
 When you click on the `read` messagebox, you will get a dialog for selecting a movie file. You can find a number of movie files in the "patches" folder that comes with Max: the media folder contains a number of different types of media that Jitter can work with. Select the movie file called "blading.mov" to be loaded.
 
