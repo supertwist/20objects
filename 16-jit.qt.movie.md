@@ -17,7 +17,7 @@ One of the things you should notice is that a `jit.qt.movie` object depends on g
 
 When you click on the `read` messagebox, you will get a dialog for selecting a movie file. You can find a number of movie files in the "patches" folder that comes with Max: the media folder contains a number of different types of media that Jitter can work with. Select the movie file called "blading.mov" to be loaded.
 
-![02](https://github.com/user-attachments/assets/60b1f99c-ca14-4db4-91d8-67a0ec0793bb)
+![02](https://github.com/user-attachments/assets/7a9d48fd-55f0-4587-8ece-3776a2189df5)
 
 > [!NOTE]
 > In modern versions of Max on the Apple OS, the patches folder is hidden within the application package:
@@ -26,11 +26,12 @@ When you click on the `read` messagebox, you will get a dialog for selecting a m
 >
 > But, you can navigate to any handy quicktime file using the `open` dialog. And, even more easily, you can access the sample movies from the video browser icon in the left margin of the Max window:
 >
-> ![02b](https://github.com/user-attachments/assets/f904008b-6196-4bef-af51-fd47a6fbd2f4)
+> ![02a](https://github.com/user-attachments/assets/66c1b032-8cde-484f-bcb0-20f486199347)
+
 >
 > This adds a `jit.playlist` object to the patch which can be viewed when connected to a `jit.pwindow` object, which we'll look at in the next section.
 >
-> ![02c](https://github.com/user-attachments/assets/53db9e19-31bb-488b-9d01-bda673902e21)
+> ![02b](https://github.com/user-attachments/assets/4c57a609-f746-4d76-87d7-b24b676aafbb)
 
 Regardless of the settings of the rest of the patch, you will immediately begin to hear the output of the movie. That is because the movie automatically starts whenever it is loaded. If the `metro` is turned on, you will find that the movie continuously loops, since looping is on by default. Finally, and most importantly, you will notice that we can't see anything; that's because we don't have the output of the `jit.qt.movie` object connected to any display window. Let's do that now.
 
