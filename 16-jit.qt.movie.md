@@ -50,14 +50,14 @@ There are a few things we should understand about this patch. First, the patchco
 
 If we connect up a green Jitter patchcord to a print object, we will see that the Max window doesn't try to display an image (it couldn't even if we wanted it to). Instead, it displays a very curious string of characters:
 
-**img-05**
+![05](https://github.com/user-attachments/assets/10bcf70d-180f-4d78-9713-8fc0dc462049)
 
 These characters represent a "pointer" to a block of data that is a video frame. Rather than sending the whole graphical frame from one object to the next, Max/Jitter creates a storage spot for the frame, then just passes the name of the frame from one object to the next. This is an efficient way for the system to move data around without overwhelming the computer with data transfer overhead.
 
 # Movie Control
 Now that we have a movie playing, the next step is to control its playback. We are going to change our initial patch a little to support better video playback. Can you see a difference in this patch?
 
-**img-06**
+![06](https://github.com/user-attachments/assets/c754120c-6270-4c81-abd5-d5a2d9919d4e)
 
 Hopefully you saw that the `metro` object was changed to a `qmetro`...
 
@@ -66,7 +66,7 @@ The `qmetro` object is a "Jitter-aware" version of `metro`; if Jitter becomes to
 
 Next, let's add a control for playback speed. The easiest way to control playback speed is to create a `rate n.nn`, where n.nn is any positive or negative floating point value. How do these values relate to playback speed?
 
-**img-07**
+![07](https://github.com/user-attachments/assets/097e429c-8aaa-4866-9690-322ca293eabc)
 
 Much like with audio and the `groove~` object, standard playback is a rate of 1.00. Any value greater than 1.00 will speed up the playback, so a rate of 2.00 would play the movie back at double-speed. Values less than one slow down playback, so a rate of 0.50 would play it back at half speed. What about negative numbers?
 
@@ -79,11 +79,11 @@ Some interesting things we can do to alter the playback of the movie requires so
 
 To get the length, we have to interrogate the `jit.qt.movie` object about the movie it has read in. We can do that by sending it a `get???` message, where you replace the "???" with the attribute you want to receive. So, for example, sending `getduration` will return the duration of the movie. Do this with the following patch to see what happens:
 
-**img-08**
+![08](https://github.com/user-attachments/assets/151ba7f7-4346-41cc-a755-f2df3140a578)
 
 Note that we get a value, but it is a rather weird number. In my example, the result was the value 7240, which doesn't look right for any timebase that we've used to this date. The reason? Because it isn't in milliseconds, samples or days; rather, it is in "QuickTime Units". In order to figure out how many QuickTime Units represent a second (and this is specific to the movie), we need to query `jit.qt.movie` again - this time with a `gettimescale` message. If we use the route object to separate the messages, we get a patch like this:
 
-**img-09**
+![09](https://github.com/user-attachments/assets/390ef5bc-228f-42f7-a9cc-c54999790ff2)
 
 The timescale is the number of QuickTime Units per second, so we can find out the duration of the movie (in seconds) by dividing the duration by the timebase, giving us a value of 12.067. We will want to work in milliseconds (a timescale we are familiar with), so we will also need to multiply the value by 1000. We can then use the result to adjust some scale objects that will alter the results of an `rslider` - giving us (finally!) the loop points we need in milliseconds increments.
 
