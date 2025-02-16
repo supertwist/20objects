@@ -43,7 +43,7 @@ The window starts off with a default (and rather small) size; you can resize it 
 
 Once you've resized the `jit.pwindow`, you can hook up a patchcord between the `jit.qt.movie` object and the `pwindow`. If the `metro` object is running, you will immediately see the output of the movie that is currently playing.
 
-**img-04**
+![04](https://github.com/user-attachments/assets/6c0ebdef-1606-47ba-b690-598d177721ae)
 
 There are a few things we should understand about this patch. First, the patchcord that connects the `jit.qt.movie` and the `jit.pwindow` is a curiously fuzzy/green version - similar to an MSP patchord, but a different color. This gives us a visual clue that this patchcord is carrying a different "load" than a normal patchcord.
 
