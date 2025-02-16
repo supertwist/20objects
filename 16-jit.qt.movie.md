@@ -22,7 +22,7 @@ When you click on the `read` messagebox, you will get a dialog for selecting a m
 > [!NOTE]
 > In modern versions of Max on the Apple OS, the patches folder is hidden within the application package:
 >
->`user/Applications/Max.app/Contents/Resources/C74/media/jitter/bball.mov`
+>`user/Applications/Max.app/Contents/Resources/C74/media/jitter/`
 >
 > But, you can navigate to any handy quicktime file using the `open` dialog. And, even more easily, you can access the sample movies from the video browser icon in the left margin of the Max window:
 >
